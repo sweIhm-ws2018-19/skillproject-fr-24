@@ -1,4 +1,4 @@
-/*
+    /*
      Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file
@@ -11,24 +11,20 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.colorpicker;
+package main.java.songbird;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import main.java.colorpicker.handlers.FallbackIntentHandler;
-import main.java.colorpicker.handlers.HelpIntentHandler;
-import main.java.colorpicker.handlers.LaunchRequestHandler;
-import main.java.colorpicker.handlers.SessionEndedRequestHandler;
-import main.java.colorpicker.handlers.WhatsMyColorIntentHandler;
-import main.java.colorpicker.handlers.CancelandStopIntentHandler;
-import main.java.colorpicker.handlers.MyColorIsIntentHandler;
+import main.java.songbird.handlers.*;
 
-public class ColorPickerStreamHandler extends SkillStreamHandler {
+public class SongbirdStreamHandler extends SkillStreamHandler {
 
     private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
+                        new StimmeIntentHandler(),
+                        new ZwerchfellIntentHandler(),
                         new WhatsMyColorIntentHandler(),
                         new MyColorIsIntentHandler(),
                         new LaunchRequestHandler(),
@@ -41,7 +37,7 @@ public class ColorPickerStreamHandler extends SkillStreamHandler {
                 .build();
     }
 
-    public ColorPickerStreamHandler() {
+    public SongbirdStreamHandler() {
         super(getSkill());
     }
 

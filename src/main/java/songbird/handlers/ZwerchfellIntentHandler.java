@@ -11,26 +11,32 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.colorpicker.handlers;
+package main.java.songbird.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
-import com.amazon.ask.model.SessionEndedRequest;
 
 import java.util.Optional;
 
-import static com.amazon.ask.request.Predicates.requestType;
+import static com.amazon.ask.request.Predicates.intentName;
 
-public class SessionEndedRequestHandler implements RequestHandler {
+public class ZwerchfellIntentHandler implements RequestHandler {
+
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(requestType(SessionEndedRequest.class));
+        return input.matches(intentName("ZwerchfellIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        // any cleanup logic goes here
-        return input.getResponseBuilder().build();
+        String speechText;
+
+        speechText = "Audiodatei Beispiel Zwerchfell 1-3. Wiederhole diese Übung circa zu fünf Mal und sage das Wort \"weiter\", sobald du fertig bist.";
+
+        return input.getResponseBuilder()
+                .withSpeech(speechText)
+                .withSimpleCard("SimpleCardExample", speechText)
+                .build();
     }
 }

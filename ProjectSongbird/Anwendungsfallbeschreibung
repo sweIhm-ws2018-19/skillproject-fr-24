@@ -105,3 +105,18 @@
 | Offene Punkte                     |                                                                                                                                                                                                                              |
 | Änderungshistorie                 |                                                                                                                                                                                                                              |
 | Sonstige Anmerkungen              |                                                                                                                                                                                                                              |
+
+| Beschreibung Systemanwendungsfall |                                                                                                                      |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Name                              | Hilfe Intervalle                                                                                                     |
+| Kurzbeschreibung                  | Der User sagt zu Alexa, dass er Hilfe zu Intervallen möchte. Daraufhin gibt Alexa ihm Informationen zu diesen.       |
+| Akteure                           | User                                                                                                                 |
+| Auslöser                          | Der User weiß nicht was Intervalle sind und hätte gerne eine Erklärung zu ihnen, oder er hat vergessen was sie sind. |
+| Vorbedingungen                    | Der User muss sich entscheiden, ob er Koloraturen üben möchte oder Intervalle.                                       |
+| Eingehende Informationen          | keine                                                                                                                |
+| Ergebnis(se)                      | Der User erhält eine Erklärung zu Intervallen.                                                                       |
+| Ablauf                            |  1.Äußerung analysieren 2.Abspielen der Erklärung 3.Abspielen eines Intervalls 4.Auf weitere Befehle warten          |
+| Alternativen                      |                                                                                                                      |
+| Offene Punkte                     |                                                                                                                      |
+| Änderungshistorie                 |                                                                                                                      |
+| Sonstige Anmerkungen              |                                                                                                                      |

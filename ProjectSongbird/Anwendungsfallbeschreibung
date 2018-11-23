@@ -57,3 +57,21 @@
 | Offene Punkte                     | -sollen wir eine Erinnerung einfügen, dass der User irgendwann weiter sagen muss?                                                       |
 | Änderungshistorie                 |                                                                                                                                         |
 | Sonstige Anmerkungen              |                                                                                                                                         |
+
+| Beschreibung Systemanwendungsfall |                                                                                                                                         |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Name                              | Koloraturen trainieren                                                                                                                  |
+| Kurzbeschreibung                  | Der Akteur sagt zu Alexa, dass er seine Koloraturen trainieren will.                                                                    |
+|                                   | Dann wird ihm ein Beispiel vorgespielt, dass er dann nachsingen kann.                                                                   |
+|                                   | Danach fragt sie den User, ob dieser mehr Koloraturen trainieren möchte oder nicht.                                                     |
+| Akteure                           | User                                                                                                                                    |
+| Auslöser                          | Der User möchte seine Koloraturen trainieren.                                                                                           |
+| Vorbedingungen                    | keine                                                                                                                                   |
+| Eingehende Informationen          | keine                                                                                                                                   |
+| Ergebnis(se)                      | User bekommt eine Audio vorgespielt die er nachsingen soll.                                                                             |
+| Ablauf                            |  1.    Äußerung analysieren 2.    Abspielen des Beispiels 3.    Auf weitere Befehle warten                                              |
+|                                   | Abspielen des Beispiels                                                                                                                 |
+| Alternativen                      | 2a) zu Hilfe Koloraturen gehen                                                                                                          |
+| Offene Punkte                     |                                                                                                                                         |
+| Änderungshistorie                 |                                                                                                                                         |
+| Sonstige Anmerkungen              |                                                                                                                                         |

@@ -42,3 +42,18 @@
 | Offene Punkte                     |                                                                                                                                                                                                          |
 | Änderungshistorie                 |                                                                                                                                                                                                          |
 | Sonstige Anmerkungen              |                                                                                                                                                                                                          |
+
+| Beschreibung Systemanwendungsfall |                                                                                                                                         |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Name                              | kein Aufwärmbeispiel hören                                                                                                              |
+| Kurzbeschreibung                  | Der User will kein Aufwärmbeispiel hören, sollte sich jetzt eigentlich selber aufwärmen. Dies wird vom Skill jedoch nicht kontrolliert. |
+| Akteure                           | User                                                                                                                                    |
+| Auslöser                          | User möchte seine Stimme trainieren und hat nach dem Willkommen block die Option Stimme trainieren ausgewählt.                          |
+| Vorbedingungen                    | Option Stimme trainieren wurde gewählt                                                                                                  |
+| Eingehende Informationen          | keine                                                                                                                                   |
+| Ergebnis(se)                      |                                                                                                                                         |
+| Ablauf                            | Programm wartet auf ein weiter                                                                                                          |
+| Alternativen                      |                                                                                                                                         |
+| Offene Punkte                     | -sollen wir eine Erinnerung einfügen, dass der User irgendwann weiter sagen muss?                                                       |
+| Änderungshistorie                 |                                                                                                                                         |
+| Sonstige Anmerkungen              |                                                                                                                                         |

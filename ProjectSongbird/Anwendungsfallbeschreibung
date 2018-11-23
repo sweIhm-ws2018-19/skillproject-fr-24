@@ -69,9 +69,24 @@
 | Vorbedingungen                    | keine                                                                                                                                   |
 | Eingehende Informationen          | keine                                                                                                                                   |
 | Ergebnis(se)                      | User bekommt eine Audio vorgespielt die er nachsingen soll.                                                                             |
-| Ablauf                            |  1.    Äußerung analysieren 2.    Abspielen des Beispiels 3.    Auf weitere Befehle warten                                              |
+| Ablauf                            |  1. Äußerung analysieren 2. Abspielen des Beispiels 3. Auf weitere Befehle warten                                              |
 |                                   | Abspielen des Beispiels                                                                                                                 |
 | Alternativen                      | 2a) zu Hilfe Koloraturen gehen                                                                                                          |
 | Offene Punkte                     |                                                                                                                                         |
 | Änderungshistorie                 |                                                                                                                                         |
 | Sonstige Anmerkungen              |                                                                                                                                         |
+
+| Beschreibung Systemanwendungsfall |                                                                                                                         |
+|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| Name                              | Hilfe Koloraturen                                                                                                       |
+| Kurzbeschreibung                  | Der User sagt zu Alexa, dass er Hilfe zu Koloraturen möchte. Daraufhin gibt Alexa ihm Informationen zu ihnen.           |
+| Akteure                           | User                                                                                                                    |
+| Auslöser                          | Der Nutzer weiß nicht was Koloraturen sind und hätte gerne eine Erklärung zu ihnen, oder er hat vergessen was sie sind. |
+| Vorbedingungen                    | keine                                                                                                                   |
+| Eingehende Informationen          | keine                                                                                                                   |
+| Ergebnis(se)                      | Der User erhält eine Erklärung zu Koloraturen.                                                                          |
+| Ablauf                            |  1. Äußerung analysieren 2. Erklärung abspielen 2. Abspielen der Koloratur 4. Auf weitere Befehle warten                |
+| Alternativen                      |                                                                                                                         |
+| Offene Punkte                     |                                                                                                                         |
+| Änderungshistorie                 |                                                                                                                         |
+| Sonstige Anmerkungen              |                                                                                                                         |

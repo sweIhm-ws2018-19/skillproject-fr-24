@@ -43,7 +43,7 @@ public class StimmeIntentHandler implements RequestHandler{
 
         Map<String, Slot> slots = intent.getSlots();
         String example = slots.get("BeispielZwerchfell").getValue();
-        String trainingType = slots.get("Intervalle_Kolleraturen").getValue();
+        String trainingType = slots.get("Intervalle_Koloraturen").getValue();
 
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
             speechText = "Spiele Beispiel ab";
@@ -55,10 +55,10 @@ public class StimmeIntentHandler implements RequestHandler{
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 
-        if (slots.get("Intervalle_Kolleraturen").toString().contains("Intervalle")) {
+        if (slots.get("Intervalle_Koloraturen").toString().contains("Intervalle")) {
             trainingText = "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. Audidatei_Intervall eins bis acht Shuffeln. Demoskill beendet";
         }
-        else if (slots.get("Intervalle_Kolleraturen").toString().contains("Kolleraturen")) {
+        else if (slots.get("Intervalle_Koloraturen").toString().contains("Koloraturen")) {
             trainingText = "Weiter gehts. Zuerst spiele ich dir die Koloraturen vor und du singst auf H mit. Spiele Audiodatei_Koloratur Eins Zwei und Drei ab. Demoskill beendet";
         }
         else {
@@ -83,8 +83,8 @@ public class StimmeIntentHandler implements RequestHandler{
 
     /*
     private void askForTrainingType(HandlerInput input) {
-        String trainingType = (String)input.getAttributesManager().getSessionAttributes().get("Intervalle_Kolleraturen");
-        if(trainingType.equals("Kolleraturen")) {
+        String trainingType = (String)input.getAttributesManager().getSessionAttributes().get("Intervalle_Koloraturen");
+        if(trainingType.equals("Koloraturen")) {
             //run audio file
         }
         else{

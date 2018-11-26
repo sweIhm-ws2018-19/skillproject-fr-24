@@ -11,12 +11,12 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package java.songbird;
+package songbird;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import java.songbird.handlers.*;
+import songbird.handlers.*;
 
 public class SongbirdStreamHandler extends SkillStreamHandler {
 
@@ -30,7 +30,9 @@ public class SongbirdStreamHandler extends SkillStreamHandler {
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
-                        new FallbackIntentHandler())
+                        new TrainingTypeIntentHandler(),
+                        new FallbackIntentHandler(),
+                        new TippsIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")
                 .build();

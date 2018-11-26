@@ -11,12 +11,12 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.songbird;
+package java.songbird;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import main.java.songbird.handlers.*;
+import java.songbird.handlers.*;
 
 public class SongbirdStreamHandler extends SkillStreamHandler {
 

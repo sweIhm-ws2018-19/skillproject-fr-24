@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.songbird.handlers;
+package java.songbird.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -26,8 +26,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
-import static main.java.songbird.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
-import static main.java.songbird.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
+import static java.songbird.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
+import static java.songbird.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class MyColorIsIntentHandler implements RequestHandler {

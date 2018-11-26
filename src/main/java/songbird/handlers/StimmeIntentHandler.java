@@ -41,10 +41,12 @@ public class StimmeIntentHandler implements RequestHandler{
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
 
+
         Map<String, Slot> slots = intent.getSlots();
         String example = slots.get("BeispielZwerchfell").getValue();
         String trainingType = slots.get("Intervalle_Koloraturen").getValue();
 
+        //check if to play example or not
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
             speechText = "Spiele Beispiel ab";
         }
@@ -55,6 +57,7 @@ public class StimmeIntentHandler implements RequestHandler{
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 
+        //Intervalle oder Koloraturen
         if (slots.get("Intervalle_Koloraturen").toString().contains("Intervalle")) {
             trainingText = "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. Audidatei_Intervall eins bis acht Shuffeln. Demoskill beendet";
         }
@@ -67,7 +70,7 @@ public class StimmeIntentHandler implements RequestHandler{
 
         boolean isEndOfDialog = intentRequest.getDialogState() == DialogState.COMPLETED;
         if(isEndOfDialog){
-            return input.getResponseBuilder().withSpeech(trainingText).build();
+            return input.getResponseBuilder().withSpeech(trainingText).withShouldEndSession(false).build();
         }
         //String example = (String)input.getAttributesManager().getSessionAttributes().get("BeispielZwerchfell");
 

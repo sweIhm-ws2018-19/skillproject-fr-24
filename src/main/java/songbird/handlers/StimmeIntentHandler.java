@@ -16,13 +16,8 @@ package java.songbird.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
-import com.amazon.ask.model.interfaces.audioplayer.AudioItem;
-import com.amazon.ask.model.interfaces.audioplayer.AudioPlayerInterface;
 import com.amazon.ask.model.interfaces.audioplayer.PlayBehavior;
-import com.amazon.ask.model.interfaces.audioplayer.Stream;
 import com.amazon.ask.response.ResponseBuilder;
-import org.apache.http.client.methods.RequestBuilder;
-
 
 import java.util.Map;
 import java.util.Optional;
@@ -80,6 +75,12 @@ public class StimmeIntentHandler implements RequestHandler{
         //builder.addAudioPlayerPlayDirective(PlayBehavior.ENQUEUE, Long.valueOf(0), "",path ,path);
         return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
     }
+
+   /* public Optional<Response> handleSecondSlot(HandlerInput input) {
+        //return  input.getResponseBuilder().
+    } */
+
+
     /*
     private void askForTrainingType(HandlerInput input) {
         String trainingType = (String)input.getAttributesManager().getSessionAttributes().get("Intervalle_Kolleraturen");

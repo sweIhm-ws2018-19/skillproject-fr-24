@@ -31,7 +31,8 @@ public class SongbirdStreamHandler extends SkillStreamHandler {
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
                         new TrainingTypeIntentHandler(),
-                        new FallbackIntentHandler())
+                        new FallbackIntentHandler(),
+                        new TippsIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")
                 .build();

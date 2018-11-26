@@ -11,11 +11,12 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package java.songbird.handlers;
+package songbird.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import songbird.lists.TipList;
 
 import java.util.Optional;
 

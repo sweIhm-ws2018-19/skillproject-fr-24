@@ -1,4 +1,4 @@
-package java.songbird.handlers;
+package songbird.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;

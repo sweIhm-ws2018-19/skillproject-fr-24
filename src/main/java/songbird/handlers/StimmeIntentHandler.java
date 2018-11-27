@@ -36,17 +36,12 @@ public class StimmeIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
         String speechText;
-        String trainingText;
-        String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
-
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
 
-
         Map<String, Slot> slots = intent.getSlots();
         String example = slots.get("BeispielZwerchfell").getValue();
-        String trainingType = slots.get("Intervalle_Koloraturen").getValue();
 
         //check if to play example or not
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
@@ -59,30 +54,6 @@ public class StimmeIntentHandler implements RequestHandler {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 
-        boolean isEndOfDialog = intentRequest.getDialogState() == DialogState.COMPLETED;
-        if(isEndOfDialog){
-            return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
-        }
-        //String example = (String)input.getAttributesManager().getSessionAttributes().get("BeispielZwerchfell");
-
-        //AudioItem item = AudioItem.builder().build();
-        //builder.addAudioPlayerPlayDirective(PlayBehavior.ENQUEUE, Long.valueOf(0), "",path ,path);
-        return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
+        return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
     }
-
-   /* public Optional<Response> handleSecondSlot(HandlerInput input) {
-        //return  input.getResponseBuilder().
-    } */
-
-
-    /*
-    private void askForTrainingType(HandlerInput input) {
-        String trainingType = (String)input.getAttributesManager().getSessionAttributes().get("Intervalle_Koloraturen");
-        if(trainingType.equals("Koloraturen")) {
-            //run audio file
-        }
-        else{
-            //run audio file
-        }
-    }*/
 }

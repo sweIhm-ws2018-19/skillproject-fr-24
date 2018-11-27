@@ -11,10 +11,10 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class TrainingTypeIntentHandler implements RequestHandler {
+public class IntervallTrainingIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("TrainingTypeIntent"));
+        return input.matches(intentName("IntervallTrainingIntent"));
     }
 
 
@@ -23,7 +23,7 @@ public class TrainingTypeIntentHandler implements RequestHandler {
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
-        String output = "";
+        String output = "Spiele Intervalltraining.";
         String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
 
         Stream audioStream = Stream.builder().withUrl(path).withToken("test.mp3").withOffsetInMilliseconds(Long.valueOf(0)).build();
@@ -31,16 +31,7 @@ public class TrainingTypeIntentHandler implements RequestHandler {
         AudioPlayerState state = AudioPlayerState.builder().withToken("test.mp3").withPlayerActivity(PlayerActivity.PLAYING).build();
         PlayDirective directive = PlayDirective.builder().withAudioItem(item).build();
 
-        Map<String, Slot> slots = intent.getSlots();
-        String trainingType = slots.get("TrainingTypeChoice").getValue();
-
-        if (trainingType.contains("Intervalle")) {
-            output = "Intervalle wurde gewählt.";
-        }
-        else{
-            output = "Koloraturen wurden gewählt";
-        }
-
-        return input.getResponseBuilder().withSpeech(output).addAudioPlayerPlayDirective(directive.getPlayBehavior(), Long.valueOf(0), null, "test.mp3", path).build();
+        return input.getResponseBuilder().withSpeech(output).withShouldEndSession(true).build();
+        //return input.getResponseBuilder().withSpeech(output).addAudioPlayerPlayDirective(directive.getPlayBehavior(), Long.valueOf(0), null, "test.mp3", path).build();
     }
 }

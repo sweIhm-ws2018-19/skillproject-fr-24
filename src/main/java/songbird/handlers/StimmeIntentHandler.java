@@ -46,9 +46,11 @@ public class StimmeIntentHandler implements RequestHandler {
         //check if to play example or not
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
             speechText = "Spiele Beispiel ab";
+            speechText += "Möchtest du jetzt Koloraturen oder Intervalle üben?";
         }
         else if(slots.get("BeispielZwerchfell").toString().contains("False")){
             speechText = "";
+            speechText += "Möchtest du jetzt Koloraturen oder Intervalle üben?";
         }
         else {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();

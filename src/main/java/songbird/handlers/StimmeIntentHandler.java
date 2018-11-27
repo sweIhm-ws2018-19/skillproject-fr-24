@@ -24,7 +24,9 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class StimmeIntentHandler implements RequestHandler{
+public class StimmeIntentHandler implements RequestHandler {
+
+    //public static int testVariable = 0;
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -57,20 +59,9 @@ public class StimmeIntentHandler implements RequestHandler{
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 
-        //Intervalle oder Koloraturen
-        if (slots.get("Intervalle_Koloraturen").toString().contains("Intervalle")) {
-            trainingText = "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. Audidatei_Intervall eins bis acht Shuffeln. Demoskill beendet";
-        }
-        else if (slots.get("Intervalle_Koloraturen").toString().contains("Koloraturen")) {
-            trainingText = "Weiter gehts. Zuerst spiele ich dir die Koloraturen vor und du singst auf H mit. Spiele Audiodatei_Koloratur Eins Zwei und Drei ab. Demoskill beendet";
-        }
-        else {
-            return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
-        }
-
         boolean isEndOfDialog = intentRequest.getDialogState() == DialogState.COMPLETED;
         if(isEndOfDialog){
-            return input.getResponseBuilder().withSpeech(trainingText).withShouldEndSession(false).build();
+            return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
         }
         //String example = (String)input.getAttributesManager().getSessionAttributes().get("BeispielZwerchfell");
 

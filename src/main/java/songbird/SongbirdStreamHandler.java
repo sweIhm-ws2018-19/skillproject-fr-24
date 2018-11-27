@@ -26,6 +26,7 @@ public class SongbirdStreamHandler extends SkillStreamHandler {
                         new StimmeIntentHandler(),
                         new WhatsMyColorIntentHandler(),
                         new IntervallTrainingIntentHandler(),
+                        new KoloraturenTrainingIntentHandler(),
                         new MyColorIsIntentHandler(),
                         new LaunchRequestHandler(),
                         new CancelandStopIntentHandler(),

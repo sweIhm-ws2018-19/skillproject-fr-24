@@ -2,16 +2,17 @@ package songbird.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.*;
+import com.amazon.ask.model.Intent;
+import com.amazon.ask.model.IntentRequest;
+import com.amazon.ask.model.Request;
+import com.amazon.ask.model.Response;
 import com.amazon.ask.model.interfaces.audioplayer.*;
 
-import java.io.FileInputStream;
-import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class IntervallTrainingIntentHandler implements RequestHandler {
+public class KoloraturenTrainingIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
         return input.matches(intentName("IntervallTrainingIntent"));
@@ -23,7 +24,7 @@ public class IntervallTrainingIntentHandler implements RequestHandler {
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
-        String output = "Spiele Intervalltraining.";
+        String output = "Spiele Koloraturentraining.";
         String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
 
         Stream audioStream = Stream.builder().withUrl(path).withToken("test.mp3").withOffsetInMilliseconds(Long.valueOf(0)).build();

@@ -16,7 +16,7 @@ package songbird.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
-import com.amazon.ask.model.interfaces.audioplayer.PlayBehavior;
+import com.amazon.ask.model.interfaces.audioplayer.*;
 import com.amazon.ask.response.ResponseBuilder;
 
 import java.util.Map;
@@ -36,12 +36,18 @@ public class StimmeIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
         String speechText;
+        String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
 
         Map<String, Slot> slots = intent.getSlots();
         String example = slots.get("BeispielZwerchfell").getValue();
+
+        Stream audioStream = Stream.builder().withUrl(path).withToken("test.mp3").withOffsetInMilliseconds(Long.valueOf(0)).build();
+        AudioItem item = AudioItem.builder().withStream(audioStream).build();
+        AudioPlayerState state = AudioPlayerState.builder().withToken("test.mp3").withPlayerActivity(PlayerActivity.PLAYING).build();
+        PlayDirective directive = PlayDirective.builder().withAudioItem(item).build();
 
         //check if to play example or not
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
@@ -56,6 +62,6 @@ public class StimmeIntentHandler implements RequestHandler {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 
-        return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
+        return input.getResponseBuilder().addAudioPlayerPlayDirective(PlayBehavior.ENQUEUE,state.getOffsetInMilliseconds(), null, state.getToken(),item.getStream().getUrl()).withSpeech(speechText).withShouldEndSession(false).build();
     }
 }

@@ -62,6 +62,6 @@ public class StimmeIntentHandler implements RequestHandler {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 
-        return input.getResponseBuilder().addAudioPlayerPlayDirective(PlayBehavior.ENQUEUE,state.getOffsetInMilliseconds(), null, state.getToken(),item.getStream().getUrl()).withSpeech(speechText).withShouldEndSession(false).build();
+        return input.getResponseBuilder().addAudioPlayerPlayDirective(PlayBehavior.REPLACE_ALL,state.getOffsetInMilliseconds(), null, state.getToken(),item.getStream().getUrl()).withSpeech(speechText).withShouldEndSession(false).build();
     }
 }

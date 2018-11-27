@@ -20,8 +20,7 @@ public class TippsIntentHandler implements RequestHandler{
         String tippsText = "test, Koloraturen";
 
 
-        return handlerInput.getResponseBuilder().withSpeech(tippsText)
-                .withShouldEndSession(false).addDelegateDirective(null).build();
+        return handlerInput.getResponseBuilder().withSpeech(tippsText).withShouldEndSession(false).build();
     }
 }
 

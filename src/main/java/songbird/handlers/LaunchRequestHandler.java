@@ -30,7 +30,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hei, schön dich zu hören. Möchtest du heute an deiner Stimme arbeiten oder brauchst du zuerst Tipps? Die Tippsfunktion ist neben anderen Funktionen in dieser Demo nicht verfügbar";
+        String speechText = "Hei, schön dich zu hören. Möchtest du heute an deiner Stimme arbeiten oder brauchst du zuerst Tipps?";
         String repromptText = "Ich kann dich leider nicht hören.";
         return input.getResponseBuilder()
                 .withSimpleCard("WelcomeMessage", speechText)

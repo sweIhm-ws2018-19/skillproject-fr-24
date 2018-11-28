@@ -14,13 +14,17 @@ public class TippsIntentHandler implements RequestHandler{
     }
 
     @Override
-    public Optional<Response> handle(HandlerInput handlerInput) {
+    public Optional<Response> handle(HandlerInput input) {
 
 
         String tippsText = "test, Koloraturen";
 
 
-        return handlerInput.getResponseBuilder().withSpeech(tippsText).withShouldEndSession(false).build();
+        return input.getResponseBuilder()
+                .withSimpleCard("title", "cardText")
+                .withSpeech(tippsText)
+                .withReprompt("bar")
+                .withShouldEndSession(false).build();
     }
 }
 

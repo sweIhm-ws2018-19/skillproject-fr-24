@@ -1,9 +1,12 @@
 package songbird.lists;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class TipList {
 
+    private static final int NO_TIP_LEFT_TO_SAY = -1;
     private final String[] tipList = new String[] {
             "Durch die richtige Atemtechnik kannst du ?beranstrengung beim Singen  vorbeugen. Um diese zu ?ben, lege deine Hand auf den Bauch.  Achte  darauf, dass deine Schultern entspannt sind und du dich nicht  verkrampfst. Atme tief ein. Wenn sich deine Bauchdecke hebt, machst du  es richtig.",
             "Der wichtigste Einatmungs-Muskel ist das Zwerchfell. Es hebt und senkt sich mit der Atmung. Je mehr Druck es dabei erzeugt, um die Luft aus den Lungen zu pressen, desto lauter wird der Ton.",
@@ -22,6 +25,17 @@ public class TipList {
     };
 
     private Random randomGenerator = new Random();
+    private static Map<Integer, Boolean> tipListMapWasTipSaid;
+
+    /**
+     * Constructor of TipList. Sets up the map for the tipList.
+     */
+    public TipList() {
+        tipListMapWasTipSaid = new HashMap<>();
+        for (int index = 0; index < tipList.length; ++index) {
+            tipListMapWasTipSaid.put(index, false);
+        }
+    }
 
     /**
      * Returns an random tip from the list with the help of a pseudorandom Number.
@@ -29,6 +43,16 @@ public class TipList {
      */
     public String getRandomTip() {
         int randomInt = randomGenerator.nextInt(tipList.length);
+
+        if (tipListMapWasTipSaid.get(randomInt)) {
+            randomInt = getIndexFromUnsaidTip();
+        }
+        if (randomInt == NO_TIP_LEFT_TO_SAY) {
+            resetAllMapValues();
+            randomInt = randomGenerator.nextInt(tipList.length);
+        }
+
+        tipListMapWasTipSaid.replace(randomInt, true);
 
         return tipList[randomInt];
     }
@@ -39,11 +63,44 @@ public class TipList {
      * @return The tip from index.
      */
      String getListField(int index) {
-        if (index < tipList.length) {
+        if ( index >= 0 && index < tipList.length) {
             return tipList[index];
         } else {
             throw new ArrayIndexOutOfBoundsException("Index can only be between 0 and 13!");
         }
+    }
 
+    /**
+     * This method sets all values of the Map tipListMap... to false -> items were not said.
+     * To use, when all tips were read.
+     */
+    private void resetAllMapValues() {
+         for (int index = 0; index < tipList.length; ++index) {
+             tipListMapWasTipSaid.replace(index, false);
+         }
+    }
+
+    /**
+     * Get an index for the tipList, that was not used by the AlexaSkill.
+     * @return Get the index or a negative Number, if everything was said.
+     */
+    private int getIndexFromUnsaidTip() {
+        return tipListMapWasTipSaid.entrySet().stream().
+                filter(s -> !s.getValue()).
+                map(Map.Entry::getKey).
+                findAny().orElse(NO_TIP_LEFT_TO_SAY);
+    }
+
+    /**
+     * Getter Method to get the information, if the list element on the index was said or not.
+     * @param index index from the list, to check the fitting value.
+     * @return if the tip from this index was said or not.
+     */
+    public boolean getValueFromMap(int index) {
+        if (index >= 0 && index < tipList.length) {
+            return tipListMapWasTipSaid.get(index);
+        } else {
+            throw new IndexOutOfBoundsException("Index can only be between 0 and 13");
+        }
     }
 }

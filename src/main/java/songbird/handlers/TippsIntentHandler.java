@@ -23,7 +23,7 @@ public class TippsIntentHandler implements RequestHandler{
         TipList tip = new TipList();
 
         String speechText = tip.getRandomTip();
-        speechText += "Möchtest du jetzt an deiner Stimme arbeiten oder mehr Tipps?";
+        speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder mehr Tipps?";
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)

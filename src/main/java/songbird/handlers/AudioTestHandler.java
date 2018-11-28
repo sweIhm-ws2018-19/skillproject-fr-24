@@ -34,7 +34,7 @@ public class AudioTestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "<audio src=’https://s3.amazonaws.com/ask-soundlibrary/musical/amzn_sfx_trumpet_bugle_03.mp3'/>";
+        String speechText = "<audio src=’https://s3-us-west-1.amazonaws.com/sayspring-prod/media/celtic-open-chime.mp3'/>";
         String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
 
 

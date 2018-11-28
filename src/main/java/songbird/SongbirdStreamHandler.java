@@ -26,6 +26,7 @@ public class SongbirdStreamHandler extends SkillStreamHandler {
         return Skills.standard()
                 .addRequestHandlers(
                         new StimmeIntentHandler(),
+                        new IntervallTrainingIntentHandler(),
                         new AudioTestHandler(),
                         new KoloraturenTrainingIntentHandler(),
                         new LaunchRequestHandler(),

@@ -12,7 +12,7 @@ import java.util.Optional;
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class TippsIntentHandler implements RequestHandler{
-    private TipList tip = new TipList();
+
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -21,7 +21,7 @@ public class TippsIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-
+        TipList tip = new TipList();
         String speechText = tip.getRandomTip();
         speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder mehr Tipps?";
 

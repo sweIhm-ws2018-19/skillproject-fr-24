@@ -29,8 +29,8 @@ public class HelpIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Du kannst mir Deine Lieblingsfarbe sagen. Sage zum Beispiel, meine Lieblingsfarbe ist rot.";
-        String repromptText = "Bitte sage mir Deine Lieblingsfarbe.";
+        String speechText = "Du kannst mir sagen, ob du Tipps hören möchtest, oder ob du an deiner Stimme trainieren magst.";
+        String repromptText = "Bitte sage mir, ob du an deiner Stimme arbeiten willst, oder Tipps hören magst.";
         return input.getResponseBuilder()
                 .withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)

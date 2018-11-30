@@ -33,6 +33,7 @@ public class SongbirdStreamHandler extends SkillStreamHandler {
                         new HelpIntentHandler(),
                         new IntervallTrainingIntentHandler(),
                         new FallbackIntentHandler(),
+                        new ResumeIntentHandler(),
                         new TippsIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")

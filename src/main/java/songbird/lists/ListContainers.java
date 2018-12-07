@@ -61,14 +61,30 @@ public class ListContainers {
     };
 
     private final String[] explanationLaufList = new String[] {
-      "Als Lauf bezeichnet man in der Musik eine schnelle bis maeßig schnelle Tonabfolge. Oft handelt es sich dabei um Tonleitern oder Intervallen die in Halb oder Ganztoenen gespielt werden. In dieser Uebung werden die Toene einer Tonleiter auf und absteigend gespielt. Willst du nun Laeufe oder Intervalle ueben? ",
-      "Laeufe sind in der Musik schnelle bis maeßig schnelle Abfolgen von Toenen. Meist sind es Tonleitern oder Intervalle, die in Halb oder Ganztoenen gespielt werden. In dieser Uebung werden die Toene einer Tonleiter auf und absteigend gespielt. Moechtest du nun Laeufe oder Intervalle ueben? "
+            "Als Lauf bezeichnet man in der Musik eine schnelle bis maeßig schnelle Tonabfolge. Oft handelt es sich dabei um Tonleitern oder Intervallen die in Halb oder Ganztoenen gespielt werden. In dieser Uebung werden die Toene einer Tonleiter auf und absteigend gespielt. Willst du nun Laeufe oder Intervalle ueben? ",
+            "Laeufe sind in der Musik schnelle bis maeßig schnelle Abfolgen von Toenen. Meist sind es Tonleitern oder Intervalle, die in Halb oder Ganztoenen gespielt werden. In dieser Uebung werden die Toene einer Tonleiter auf und absteigend gespielt. Moechtest du nun Laeufe oder Intervalle ueben? "
     };
 
     private final String[] explainBothList = new String[] {
-      "Bei Intervallen geht es in der Musik um den Tonhoehenabstand und bei Laeufen um eine schnelle Abfolge von Toenen. Als Lauf bezeichnet man in der Musik eine schnelle bis maeßig schnelle Tonabfolge. Oft handelt es sich dabei um Tonleitern oder Intervallen die in Halb oder Ganztoenen gespielt werden. Moechtest du nun Intervalle oder Laeufe ueben? ",
-      "Intervalle sind Toenhoehenabstände zwischen zwei gleichzeitig oder nacheinander erklingenden Toenen und Laeufe die Abfolge von Toenen. Als Lauf bezeichnet man in der Musik eine schnelle bis maeßig schnelle Tonabfolge. Oft handelt es sich dabei um Tonleitern oder Intervallen die in Halb oder Ganztoenen gespielt werden. Moechtest du nun Intervalle oder Laeufe ueben? "
+            "Bei Intervallen geht es in der Musik um den Tonhoehenabstand und bei Laeufen um eine schnelle Abfolge von Toenen. Als Lauf bezeichnet man in der Musik eine schnelle bis maeßig schnelle Tonabfolge. Oft handelt es sich dabei um Tonleitern oder Intervallen die in Halb oder Ganztoenen gespielt werden. Moechtest du nun Intervalle oder Laeufe ueben? ",
+            "Intervalle sind Toenhoehenabstände zwischen zwei gleichzeitig oder nacheinander erklingenden Toenen und Laeufe die Abfolge von Toenen. Als Lauf bezeichnet man in der Musik eine schnelle bis maeßig schnelle Tonabfolge. Oft handelt es sich dabei um Tonleitern oder Intervallen die in Halb oder Ganztoenen gespielt werden. Moechtest du nun Intervalle oder Laeufe ueben? "
     };
+
+    private final String[] trainLaufList = {
+            "Weiter gehts. Zuerst spiele ich dir die Laeufe vor und du singst auf <break time=\"200ms\"/> H <break time=\"200ms\"/> mit. ",
+            "Weiter gehts. Zuerst spiele ich dir die Laeufe vor und du singst auf <break time=\"200ms\"/> La <break time=\"200ms\"/> mit.  ",
+            "Weiter gehts. Zuerst spiele ich dir die Laeufe vor und du singst auf <break time=\"200ms\"/> Mi <break time=\"200ms\"/> mit.  ",
+            "Weiter gehts. Zuerst spiele ich dir die Laeufe vor und du singst auf <break time=\"200ms\"/> Lu <break time=\"200ms\"/> mit.  "
+    };
+
+    private final String trainInvertall = "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. ";
+
+    private final String trainIntervallNotCompletedEnding = "Moechtest du nun weiter machen mit Intervallen? ";
+
+    private final String trainLaufNotCompletedEnding = "Moechtest du nun weiter machen mit Laeufen? ";
+
+    private final String trainIntervallLaufCompletedEnding = "Super du hast das Ende deines Traings für heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ";
+
 
     /**
      * Constructor of TipList. Sets up the map for the tipList.

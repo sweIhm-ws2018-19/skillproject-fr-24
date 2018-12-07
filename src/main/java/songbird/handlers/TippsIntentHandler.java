@@ -5,7 +5,7 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
-import songbird.lists.TipList;
+import songbird.lists.ListContainers;
 
 import java.util.Optional;
 
@@ -21,7 +21,7 @@ public class TippsIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        TipList tip = new TipList();
+        ListContainers tip = new ListContainers();
         String speechText = tip.getRandomTip();
         speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder mehr Tipps?";
 

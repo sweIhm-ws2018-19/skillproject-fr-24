@@ -1,9 +1,24 @@
 package songbird.lists;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.stubbing.OngoingStubbing;
+
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.Mockito.*;
 
 public class ListContainersTest {
+
+    @Mock private ListContainers mockList;
+
+    @Before public void setup() {
+        mockList = mock(ListContainers.class);
+    }
 
     @Test
     public void testGetRandomTip() {
@@ -67,4 +82,29 @@ public class ListContainersTest {
         ListContainers test = new ListContainers();
         test.getValueFromMap(44);
     }
+
+    @Test
+    public void testGetTrainIntervallAndLaufCompletedEnding() {
+        ListContainers test = new ListContainers();
+        Assert.assertEquals(test.getTrainIntervallAndLaufCompletedEnding(), "Super du hast das Ende deines Traings fuer heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ");
+    }
+
+    @Test
+    public void testGetTrainLaufNotCompletedEndingForIntervall() {
+        ListContainers test = new ListContainers();
+        Assert.assertEquals(test.getTrainLaufNotCompletedEndingForIntervall(), "Moechtest du nun weiter machen mit Laeufen? ");
+    }
+
+    @Test
+    public void testGetTrainIntervallNotCompletedEndingForLauf() {
+        ListContainers test = new ListContainers();
+        Assert.assertEquals(test.getTrainIntervallNotCompletedEndingForLauf(), "Moechtest du nun weiter machen mit Intervallen? ");
+    }
+
+    @Test
+    public void testGetTrainInvertallStart() {
+        ListContainers test = new ListContainers();
+        Assert.assertEquals(test.getTrainInvertallStart(), "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. ");
+    }
+
 }

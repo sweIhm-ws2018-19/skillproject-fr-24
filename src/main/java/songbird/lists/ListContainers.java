@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * All variations of Strings for Alexa to say. For various IntentHandler.
+ */
 public class ListContainers {
 
     private static final int NO_TIP_LEFT_TO_SAY = -1;
@@ -83,7 +86,7 @@ public class ListContainers {
 
     private final String trainLaufNotCompletedEnding = "Moechtest du nun weiter machen mit Laeufen? ";
 
-    private final String trainIntervallLaufCompletedEnding = "Super du hast das Ende deines Traings für heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ";
+    private final String trainIntervallLaufCompletedEnding = "Super du hast das Ende deines Traings fuer heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ";
 
 
     /**
@@ -94,6 +97,58 @@ public class ListContainers {
         for (int index = 0; index < tipList.length; ++index) {
             tipListMapWasTipSaid.put(index, false);
         }
+    }
+
+    public String getRandomWelcomeMessage() {
+        return welcomeMessageList[randomGenerator.nextInt(welcomeMessageList.length)];
+    }
+
+    public String getRandomWorkOnVoiceCommand() {
+        return workOnVoiceList[randomGenerator.nextInt(workOnVoiceList.length)];
+    }
+
+    public String getRandomNoExampleForZwerchfellWished() {
+        return noExampleZwerchfellList[randomGenerator.nextInt(noExampleZwerchfellList.length)];
+    }
+
+    public String getRandomExampleForZwerchfellWished() {
+        return exampleZwerchfellList[randomGenerator.nextInt(exampleZwerchfellList.length)];
+    }
+
+    public String getRandomQuestionIntervallOrLauf() {
+        return questionIntervalleLaufList[randomGenerator.nextInt(questionIntervalleLaufList.length)];
+    }
+
+    public String getRandomExplanationForIntervall() {
+        return explanationIntervalleList[randomGenerator.nextInt(explanationIntervalleList.length)];
+    }
+
+    public String getRandomExplanationForLauf() {
+        return explanationLaufList[randomGenerator.nextInt(explanationLaufList.length)];
+    }
+
+    public String getRandomExplanationForBoth() {
+        return explainBothList[randomGenerator.nextInt(explainBothList.length)];
+    }
+
+    public String getSampleTrainLauf() {
+        return trainLaufList[randomGenerator.nextInt(trainLaufList.length)];
+    }
+
+    public String getTrainInvertallStart() {
+        return trainInvertall;
+    }
+
+    public String getTrainIntervallNotCompletedEndingForLauf() {
+        return trainIntervallNotCompletedEnding;
+    }
+
+    public String getTrainLaufNotCompletedEndingForIntervall() {
+        return trainLaufNotCompletedEnding;
+    }
+
+    public String getTrainIntervallAndLaufCompletedEnding() {
+        return trainIntervallLaufCompletedEnding;
     }
 
     /**

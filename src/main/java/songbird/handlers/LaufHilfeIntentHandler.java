@@ -23,7 +23,6 @@ public class LaufHilfeIntentHandler implements RequestHandler{
     public Optional<Response> handle(HandlerInput input) {
         ListContainers help = new ListContainers();
         String speechText = help.getRandomExplanationForLauf();
-        speechText += "Möchtest du jetzt Laeufe oder Intervalle üben?";
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)

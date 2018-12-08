@@ -23,7 +23,6 @@ public class IntervallHilfeIntentHandler implements RequestHandler{
     public Optional<Response> handle(HandlerInput input) {
         ListContainers help = new ListContainers();
         String speechText = help.getRandomExplanationForIntervall();
-        speechText += "Möchtest du jetzt Laeufe oder Intervalle üben?";
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)

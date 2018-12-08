@@ -5,18 +5,14 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
-import songbird.lists.TipList;
+import songbird.lists.ListContainers;
 
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class TippsIntentHandler implements RequestHandler{
-    private TipList tip;
 
-    public TippsIntentHandler(TipList tip){
-        this.tip = tip;
-    }
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -25,9 +21,9 @@ public class TippsIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-
+        ListContainers tip = new ListContainers();
         String speechText = tip.getRandomTip();
-        speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder brauchst du noch einen weiteren Tipp?";
+        speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder mehr Tipps?";
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)

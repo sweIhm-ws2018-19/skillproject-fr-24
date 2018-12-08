@@ -11,23 +11,22 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class TippsIntentHandler implements RequestHandler{
+public class LaufIntHilfeIntentHandler implements RequestHandler{
 
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("TippsIntent"));
+        return input.matches(intentName("LaufIntHilfeIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        ListContainers tip = new ListContainers();
-        String speechText = tip.getRandomTip();
-        speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder oder brauchst du noch einen weiteren Tipp?";
+        ListContainers help = new ListContainers();
+        String speechText = help.getRandomExplanationForBoth();
+        speechText += "Möchtest du jetzt Laeufe oder Intervalle üben?";
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)
                 .withShouldEndSession(false).build();
     }
 }
-

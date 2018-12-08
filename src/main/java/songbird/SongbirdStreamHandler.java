@@ -17,7 +17,7 @@ import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
 import songbird.handlers.*;
-import songbird.lists.TipList;
+
 
 public class SongbirdStreamHandler extends SkillStreamHandler {
 
@@ -35,7 +35,10 @@ public class SongbirdStreamHandler extends SkillStreamHandler {
                         new IntervallTrainingIntentHandler(),
                         new FallbackIntentHandler(),
                         new ResumeIntentHandler(),
-                        new TippsIntentHandler(new TipList()))
+                        new TippsIntentHandler(),
+                        new LaufIntHilfeIntentHandler(),
+                        new IntervallHilfeIntentHandler(),
+                        new LaufHilfeIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")
                 .build();

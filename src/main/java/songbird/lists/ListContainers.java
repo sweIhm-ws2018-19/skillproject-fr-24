@@ -97,6 +97,7 @@ public class ListContainers {
         for (int index = 0; index < tipList.length; ++index) {
             tipListMapWasTipSaid.put(index, false);
         }
+
     }
 
     public String getRandomWelcomeMessage() {

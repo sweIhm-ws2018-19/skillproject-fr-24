@@ -24,11 +24,11 @@ public class KoloraturenTrainingIntentHandler implements RequestHandler {
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
-        String preText = "Weiter gehts. Zuerst spiele ich dir die Läufe vor und du singst auf <break time=\"0.2s\"/> H <break time=\"0.2s\"/> mit.";
-        String musicText = "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Laeufe.mp3\"/>";
-        String output = preText + musicText + "Willst du jetzt Intervalle trainieren oder weiter Intervalle trainieren";
+        String preText = "Weiter gehts. Zuerst spiele ich dir die Läufe vor und du singst auf <break time=\"0.2s\"/> H <break time=\"0.2s\"/> mit.<break time=\"0.9s\"/> ";
+        String musicText = "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/laeufe.mp3\"/>";
+        String output = preText + musicText + "Willst du jetzt Intervalle trainieren oder weiter Läufe trainieren <break time=\"0.9s\"/> ";
 
 
-        return input.getResponseBuilder().withSpeech(musicText).withShouldEndSession(false).build();
+        return input.getResponseBuilder().withSpeech(output).withShouldEndSession(false).build();
     }
 }

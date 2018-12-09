@@ -20,7 +20,7 @@ public class IntervallTrainingIntentHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         IntervallList list = new IntervallList();
         String preText = "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. <break time=\"0.9s\"/>";
-        String postText = "Möchtest du weiter Intervalle trainieren oder Läufe üben ? <break time=\"0.9s\"/>";
+        String postText = "<break time=\"1.0s\"/> Möchtest du weiter Intervalle trainieren oder Läufe üben ? <break time=\"0.9s\"/>";
         String musicText = list.getRandomIntervall();
         String output = preText + musicText + postText;
 

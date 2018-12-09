@@ -44,11 +44,6 @@ public class StimmeIntentHandler implements RequestHandler {
         Map<String, Slot> slots = intent.getSlots();
         String example = slots.get("BeispielZwerchfell").getValue();
 
-        Stream audioStream = Stream.builder().withUrl(path).withToken("test.mp3").withOffsetInMilliseconds(Long.valueOf(0)).build();
-        AudioItem item = AudioItem.builder().withStream(audioStream).build();
-        AudioPlayerState state = AudioPlayerState.builder().withToken("test.mp3").withPlayerActivity(PlayerActivity.PLAYING).build();
-        PlayDirective directive = PlayDirective.builder().withAudioItem(item).build();
-
         //check if to play example or not
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
             speechText = "Spiele Beispiel ab";
@@ -62,6 +57,6 @@ public class StimmeIntentHandler implements RequestHandler {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 
-        return input.getResponseBuilder().addAudioPlayerPlayDirective(PlayBehavior.REPLACE_ALL,state.getOffsetInMilliseconds(), null, state.getToken(),item.getStream().getUrl()).withSpeech(speechText).withShouldEndSession(false).build();
+        return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
     }
 }

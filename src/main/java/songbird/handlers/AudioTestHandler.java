@@ -16,9 +16,8 @@ package songbird.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
-import com.amazon.ask.model.interfaces.audioplayer.*;
+import com.amazon.ask.model.ui.SsmlOutputSpeech;
 
-import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
@@ -34,7 +33,10 @@ public class AudioTestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "<audio src=’https://s3-us-west-1.amazonaws.com/sayspring-prod/media/celtic-open-chime.mp3'/>";
+        String speechText = "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Laeufe.mp3\"/>";
+        //String speechText = "<audio src=\"https://s3-us-west-1.amazonaws.com/sayspring-prod/media/celtic-open-chime.mp3\"/>";
+        //String speechText = "<audio src=\"https://s3.amazonaws.com/songbirdswe/testaudio.mp3\"/>";
+        //String musicText = "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Laeufe.mp3\"/>";
         String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
 
 

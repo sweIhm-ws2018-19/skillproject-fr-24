@@ -15,7 +15,7 @@ import static com.amazon.ask.request.Predicates.intentName;
 public class KoloraturenTrainingIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("IntervallTrainingIntent"));
+        return input.matches(intentName("KoloraturenTrainingIntent"));
     }
 
 
@@ -24,15 +24,11 @@ public class KoloraturenTrainingIntentHandler implements RequestHandler {
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
-        String output = "Spiele Koloraturentraining.";
-        String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
+        String preText = "Weiter gehts. Zuerst spiele ich dir die Läufe vor und du singst auf <break time=\"0.2s\"/> H <break time=\"0.2s\"/> mit.";
+        String musicText = "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Laeufe.mp3\"/>";
+        String output = preText + musicText + "Willst du jetzt Intervalle trainieren oder weiter Intervalle trainieren";
 
-        Stream audioStream = Stream.builder().withUrl(path).withToken("test.mp3").withOffsetInMilliseconds(Long.valueOf(0)).build();
-        AudioItem item = AudioItem.builder().withStream(audioStream).build();
-        AudioPlayerState state = AudioPlayerState.builder().withToken("test.mp3").withPlayerActivity(PlayerActivity.PLAYING).build();
-        PlayDirective directive = PlayDirective.builder().withAudioItem(item).build();
 
-        return input.getResponseBuilder().withSpeech(output).withShouldEndSession(false).build();
-        //return input.getResponseBuilder().withSpeech(output).addAudioPlayerPlayDirective(directive.getPlayBehavior(), Long.valueOf(0), null, "test.mp3", path).build();
+        return input.getResponseBuilder().withSpeech(musicText).withShouldEndSession(false).build();
     }
 }

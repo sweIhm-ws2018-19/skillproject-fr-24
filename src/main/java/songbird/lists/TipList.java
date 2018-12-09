@@ -24,17 +24,45 @@ public class TipList {
             "Um lange Toene besser und  stabil zu halten, musst du kontrollierte Atmung und die richtige Tonlage verbinden.  Um zu ueben, atme tief ein und singe in einer angenehmen, mittleren Stimmlage auf La oder Du aus. Fokussiere dich auf die Stabilitaet des Tons und halte ihn solange wie moeglich. ",
     };
 
+    private final String[] intervallTrainingPlaylist = new String[] {
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_9.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_10.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_11.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_12.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_13.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_14.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_15.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_16.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_17.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_18.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_19.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_20.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_qua.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_qui.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_oktave.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sept.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sex.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sek.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_ter.mp3\"/>",
+    };
+
     private Random randomGenerator = new Random();
     private static Map<Integer, Boolean> tipListMapWasTipSaid;
+    private static Map<Integer, Boolean> intervallTrainingUsed;
 
     /**
      * Constructor of TipList. Sets up the map for the tipList.
-     */
+         */
     public TipList() {
         tipListMapWasTipSaid = new HashMap<>();
+        intervallTrainingUsed = new HashMap<>();
         for (int index = 0; index < tipList.length; ++index) {
             tipListMapWasTipSaid.put(index, false);
         }
+        for (int index = 0; index < intervallTrainingPlaylist.length; ++index) {
+            intervallTrainingUsed.put(index, false);
+        }
+
     }
 
     /**
@@ -56,6 +84,8 @@ public class TipList {
 
         return tipList[randomInt];
     }
+
+
 
     /**
      * Access an specific field from the list. Index can only be between 0 and 13!

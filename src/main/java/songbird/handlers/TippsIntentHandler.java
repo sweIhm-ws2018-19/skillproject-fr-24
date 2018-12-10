@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class TippsIntentHandler implements RequestHandler{
+public class TippsIntentHandler implements RequestHandler {
 
 
     @Override
@@ -20,7 +20,8 @@ public class TippsIntentHandler implements RequestHandler{
         return input.matches(intentName("TippsIntent"))
                 && (status.toString().equals(SessionAttributeList.statusWelcome)
                 || status.toString().equals(SessionAttributeList.statusIntervall)
-                || status.toString().equals(SessionAttributeList.statusLaufe));
+                || status.toString().equals(SessionAttributeList.statusLaufe)
+                || status.toString().equals(SessionAttributeList.statusTipp));
     }
 
     @Override

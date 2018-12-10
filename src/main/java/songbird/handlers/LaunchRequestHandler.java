@@ -36,7 +36,7 @@ public class LaunchRequestHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         ListContainers listContainer = new ListContainers();
         String speechText = "<audio src='soundbank://soundlibrary/animals/amzn_sfx_bird_chickadee_chirp_1x_01'/>"
-                + "<break time=\"500ms\"/>.  "
+                + "<break time=\"500ms\"/>  "
                 + listContainer.getRandomWelcomeMessage();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();

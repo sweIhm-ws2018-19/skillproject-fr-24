@@ -32,7 +32,8 @@ public class StimmeIntentHandler implements RequestHandler {
         Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
         return input.matches(intentName("StimmeIntent"))
                 && (status.toString().equals(SessionAttributeList.statusWelcome)
-                || status.toString().equals(SessionAttributeList.statusTipp));
+                || status.toString().equals(SessionAttributeList.statusTipp)
+                || status.toString().equals(SessionAttributeList.statusStimme));
     }
 
     @Override
@@ -57,13 +58,11 @@ public class StimmeIntentHandler implements RequestHandler {
             speechText = listContainer.getRandomExampleForZwerchfellWished();
             speechText += "<break time=\"0.9s\"/>. ";
             speechText += listContainer.getRandomQuestionIntervallOrLauf();
-        }
-        else if(slots.get("BeispielZwerchfell").toString().contains("False")){
+        } else if (slots.get("BeispielZwerchfell").toString().contains("False")) {
             speechText = listContainer.getRandomNoExampleForZwerchfellWished();
             speechText += "<break time=\"8.0s\"/>. ";
             speechText += listContainer.getRandomQuestionIntervallOrLauf();
-        }
-        else {
+        } else {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
         }
 

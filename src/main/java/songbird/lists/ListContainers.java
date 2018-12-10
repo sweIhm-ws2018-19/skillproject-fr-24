@@ -49,8 +49,8 @@ public class ListContainers {
     };
 
     private final String[] exampleZwerchfellList = new String[] {
-            "Audiodatei Beispiel Zwerchfell 1-3. Wiederhole diese Uebung circa zu fuenf Mal und sage das Wort \"fertig\", sobald du fertig bist.",
-            "Audiodatei Beispiel Zwerchfell 1-3. Wiederhole die Uebung fuenf Mal und gib mir mit \"fertig\" Bescheid, wenn du fertig bist.",
+            "Audiodatei Beispiel Zwerchfell 1-3. Wiederhole diese Uebung circa zu fuenf Mal und sage das Wort \"fertig\", sobald du fertig bist. ",
+            "Audiodatei Beispiel Zwerchfell 1-3. Wiederhole die Uebung fuenf Mal und gib mir mit \"fertig\" Bescheid, wenn du fertig bist. ",
     };
 
     private final String[] questionIntervalleLaufList = new String[] {
@@ -88,6 +88,27 @@ public class ListContainers {
 
     private final String trainIntervallLaufCompletedEnding = "Super du hast das Ende deines Traings fuer heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ";
 
+    private final String[] intervallList = new String[] {
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_9.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_10.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_11.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_12.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_13.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_14.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_15.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_16.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_17.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_18.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_19.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_20.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_qua.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_qui.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_oktave.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sept.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sex.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sek.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_ter.mp3\"/>",
+    };
 
     /**
      * Constructor of TipList. Sets up the map for the tipList.
@@ -98,6 +119,10 @@ public class ListContainers {
             tipListMapWasTipSaid.put(index, false);
         }
 
+    }
+
+    public String getRandomIntervall() {
+        return intervallList[randomGenerator.nextInt(intervallList.length)];
     }
 
     public String getRandomWelcomeMessage() {

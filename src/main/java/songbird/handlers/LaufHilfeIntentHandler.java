@@ -6,21 +6,28 @@ import com.amazon.ask.model.*;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
 import songbird.lists.ListContainers;
+import songbird.lists.SessionAttributeList;
 
+import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class LaufHilfeIntentHandler implements RequestHandler{
 
-
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("LaufHilfeIntent"));
+        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
+        return input.matches(intentName("LaufHilfeIntent"))
+                && status.toString().equals(SessionAttributeList.statusStimme);
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusHilfe);
+        input.getAttributesManager().setSessionAttributes(sessionAttributes);
+
         ListContainers help = new ListContainers();
         String speechText = help.getRandomExplanationForLauf();
 

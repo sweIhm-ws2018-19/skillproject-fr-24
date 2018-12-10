@@ -16,8 +16,8 @@ package songbird.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
-import com.amazon.ask.model.interfaces.audioplayer.*;
-import com.amazon.ask.response.ResponseBuilder;
+import songbird.lists.ListContainers;
+import songbird.lists.SessionAttributeList;
 
 import java.util.Map;
 import java.util.Optional;
@@ -26,15 +26,23 @@ import static com.amazon.ask.request.Predicates.intentName;
 
 public class StimmeIntentHandler implements RequestHandler {
 
-    //public static int testVariable = 0;
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("StimmeIntent"));
+        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
+        return input.matches(intentName("StimmeIntent"))
+                && (status.toString().equals(SessionAttributeList.statusWelcome)
+                || status.toString().equals(SessionAttributeList.statusTipp));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        ListContainers listContainer = new ListContainers();
+
+        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
+        input.getAttributesManager().setSessionAttributes(sessionAttributes);
+
         String speechText;
         String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
         Request request = input.getRequestEnvelope().getRequest();
@@ -46,12 +54,14 @@ public class StimmeIntentHandler implements RequestHandler {
 
         //check if to play example or not
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
-            speechText = "Spiele Beispiel ab";
-            speechText += "<break time=\"0.9s\"/>Möchtest du jetzt Läufe oder Intervalle üben?";
+            speechText = listContainer.getRandomExampleForZwerchfellWished();
+            speechText += "<break time=\"0.9s\"/>. ";
+            speechText += listContainer.getRandomQuestionIntervallOrLauf();
         }
         else if(slots.get("BeispielZwerchfell").toString().contains("False")){
-            speechText = "<break time=\"8.0s\"/>";
-            speechText += "Möchtest du jetzt Läufe oder Intervalle üben?";
+            speechText = listContainer.getRandomNoExampleForZwerchfellWished();
+            speechText += "<break time=\"8.0s\"/>. ";
+            speechText += listContainer.getRandomQuestionIntervallOrLauf();
         }
         else {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();

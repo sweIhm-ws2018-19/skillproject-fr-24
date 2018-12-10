@@ -17,7 +17,11 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
+import songbird.lists.ListContainers;
+import songbird.lists.SessionAttributeList;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.requestType;
@@ -30,12 +34,23 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hei, schön dich zu hören. Möchtest du heute an deiner Stimme arbeiten oder brauchst du zuerst Tipps?";
+        ListContainers listContainer = new ListContainers();
+        String speechText = "<audio src='soundbank://soundlibrary/animals/amzn_sfx_bird_chickadee_chirp_1x_01'/>"
+                + "<break time=\"500ms\"/>.  "
+                + listContainer.getRandomWelcomeMessage();
+
+        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusWelcome);
+        input.getAttributesManager().setRequestAttributes(sessionAttributes);
+
         String repromptText = "Ich kann dich leider nicht hören.";
         return input.getResponseBuilder()
                 .withSimpleCard("WelcomeMessage", speechText)
                 .withSpeech(speechText)
                 .withReprompt(repromptText)
+                .withShouldEndSession(false)
                 .build();
     }
 }

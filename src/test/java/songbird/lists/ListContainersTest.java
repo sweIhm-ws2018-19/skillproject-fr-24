@@ -86,7 +86,7 @@ public class ListContainersTest {
     @Test
     public void testGetTrainIntervallAndLaufCompletedEnding() {
         ListContainers test = new ListContainers();
-        Assert.assertEquals(test.getTrainIntervallAndLaufCompletedEnding(), "Super du hast das Ende deines Traings fuer heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ");
+        Assert.assertEquals(test.getTrainIntervallAndLaufCompletedEnding(), "Super du hast das Ende deines Trainings fuer heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ");
     }
 
     @Test

@@ -32,26 +32,23 @@ public class StimmeIntentHandler implements RequestHandler {
         Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
         return input.matches(intentName("StimmeIntent"))
                 && (status.toString().equals(SessionAttributeList.statusWelcome)
-                || status.toString().equals(SessionAttributeList.statusTipp)
-                || status.toString().equals(SessionAttributeList.statusStimme));
+                || status.toString().equals(SessionAttributeList.statusTipp));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
         ListContainers listContainer = new ListContainers();
 
-        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
-        input.getAttributesManager().setSessionAttributes(sessionAttributes);
-
-        String speechText;
-        String path = "https://s3.amazonaws.com/songbirdswe/testaudio.mp3";
+        String speechText = listContainer.getRandomWorkOnVoiceCommand();
+        speechText += "<break time=\"1.0s\"/>";
+        /*
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
 
         Map<String, Slot> slots = intent.getSlots();
         String example = slots.get("BeispielZwerchfell").getValue();
+
 
         //check if to play example or not
         if (slots.get("BeispielZwerchfell").toString().contains("True")) {
@@ -64,7 +61,12 @@ public class StimmeIntentHandler implements RequestHandler {
             speechText += listContainer.getRandomQuestionIntervallOrLauf();
         } else {
             return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
-        }
+        }*/
+
+        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
+        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, speechText);
+        input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
     }

@@ -25,12 +25,13 @@ public class IntervallHilfeIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusHilfe);
-        input.getAttributesManager().setSessionAttributes(sessionAttributes);
-
         ListContainers help = new ListContainers();
         String speechText = help.getRandomExplanationForIntervall();
+
+        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusHilfe);
+        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, speechText);
+        input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)

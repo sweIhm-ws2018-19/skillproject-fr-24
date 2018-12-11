@@ -32,13 +32,10 @@ public class KoloraturenTrainingIntentHandler implements RequestHandler {
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
         sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusLaufe);
         sessionAttributes.replace(SessionAttributeList.isLaufCompleted, Boolean.TRUE);
-        input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
-
-
 
         String preText = listContainer.getSampleTrainLauf();
         preText += " <break time=\"0.9s\"/> ";
@@ -49,10 +46,11 @@ public class KoloraturenTrainingIntentHandler implements RequestHandler {
         } else {
             postText += listContainer.getTrainIntervallNotCompletedEndingForLauf();
         }
-        postText += " <break time=\"0.9s\"/>. ";
-
+        postText += " <break time=\"0.5s\"/> ";
         String output = preText + musicText + postText;
 
+        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, output);
+        input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder().withSpeech(output).withShouldEndSession(false).build();
     }

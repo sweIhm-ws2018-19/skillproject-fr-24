@@ -26,13 +26,26 @@ public class TippsIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusTipp);
-        input.getAttributesManager().setSessionAttributes(sessionAttributes);
-
         ListContainers tip = new ListContainers();
+        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        tip.setMap(sessionAttributes);
+
+        Object intervallStatus = sessionAttributes.get(SessionAttributeList.isIntervallCompleted);
+        Object laufStatus = sessionAttributes.get(SessionAttributeList.isLaufCompleted);
         String speechText = tip.getRandomTip();
-        speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder brauchst du noch einen weiteren Tipp?";
+
+        if (intervallStatus.toString().equalsIgnoreCase("true") || laufStatus.toString().equalsIgnoreCase("true")) {
+            speechText += "  Brauchst du noch einen weiteren Tipp? ";
+        } else {
+            speechText += " Möchtest du jetzt an deiner Stimme arbeiten oder brauchst du noch einen weiteren Tipp?";
+        }
+
+        Map<String, Boolean> newTipmap = tip.getMap();
+
+        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusTipp);
+        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, speechText);
+        sessionAttributes.replaceAll((k, v) -> newTipmap.containsKey(k) ? newTipmap.get(k) : v);
+        input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)

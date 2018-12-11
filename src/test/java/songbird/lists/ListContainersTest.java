@@ -32,11 +32,11 @@ public class ListContainersTest {
     @Test
     public void testGetListField() {
         ListContainers testList = new ListContainers();
-        String expectedIndex13 = "Um lange Toene besser und  stabil zu halten, musst du kontrollierte Atmung und die richtige Tonlage verbinden.  Um zu ueben, atme tief ein und singe in einer angenehmen, mittleren Stimmlage auf La oder Du aus. Fokussiere dich auf die Stabilitaet des Tons und halte ihn solange wie moeglich. ";
-        String expectedIndex3 = "Der ganze Koerper dient als Resonanzraum. Waehrend hohe Toene eher im Kopf und Oberkoerper schwingen, spuert man tiefe Toene eher im Bauch. Um zu spueren, wo die Stimme klingt, versuche zuerst so zu sprechen wie eine Hexe. Ahme danach das Lachen eines Weihnachtsmannes nach. Achte dabei darauf, wo du die Schwingungen der Stimme bemerkst. Die der Hexe muessten weiter vorne, die des Weihnachtsmannes weiter hinten im Kopf zu spueren sein. ";
-        String expectedIndex0 = "Durch die richtige Atemtechnik kannst du Ueberanstrengung beim Singen  vorbeugen. Um diese zu ueben, lege deine Hand auf den Bauch.  Achte  darauf, dass deine Schultern entspannt sind und du dich nicht  verkrampfst. Atme tief ein. Wenn sich deine Bauchdecke hebt, machst du es richtig. ";
+        String expectedIndex6 = " Um lange Toene besser und  stabil zu halten, musst du kontrolliertes Atmen  und die richtige Tonlage verbinden. Um dies  zu ueben, atme tief ein und singe in einer angenehmen, mittleren Stimmlage auf La oder Du aus. Fokussiere dich auf die Stabilitaet des Tons und halte ihn solange wie moeglich. ";
+        String expectedIndex3 = " Dein psychischer Zustand beeinflusst auch deine Stimme. Die Ursache von muskulaeren Verkrampfungen koennen auch seelische Anspannungen sein. Mit Freude zu singen ist eine gute Voraussetzung, um singen zu lernen. Zudem macht Singen auch gute Laune. ";
+        String expectedIndex0 = " Durch die richtige Atemtechnik kannst du eine Ueberanstrengung der Stimme vehindern. Um diese zu ueben, lege deine Hand auf den Bauch. Achte darauf, dass deine Schultern entspannt sind und du dich nicht verkrampfst. Atme tief ein. Wenn sich deine Bauchdecke hebt, machst du es richtig. ";
 
-        Assert.assertEquals(testList.getListField(13), expectedIndex13);
+        Assert.assertEquals(testList.getListField(6), expectedIndex6);
         Assert.assertEquals(testList.getListField(3), expectedIndex3);
         Assert.assertEquals(testList.getListField(0), expectedIndex0);
     }
@@ -57,12 +57,12 @@ public class ListContainersTest {
     public void testResetAllMapValues() {
         ListContainers testList = new ListContainers();
 
-        for (int i = 0; i <= 14; ++i){
+        for (int i = 0; i <= 7; ++i){
             testList.getRandomTip();
         }
 
         int countSaidTips = 0;
-        for (int i = 0; i < 14; ++i) {
+        for (int i = 0; i < 7; ++i) {
             if (testList.getValueFromMap(i)) {
                 ++countSaidTips;
             }

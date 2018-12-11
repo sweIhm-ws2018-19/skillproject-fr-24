@@ -29,21 +29,21 @@ public class IntervallTrainingIntentHandler implements RequestHandler {
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
         sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusIntervall);
         sessionAttributes.replace(SessionAttributeList.isIntervallCompleted, Boolean.TRUE);
-        input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
-        String preText = "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. <break time=\"0.9s\"/>";
-        String postText = "<break time=\"1.0s\"/>. ";
+        String preText = "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. <break time=\"0.8s\"/>";
+        String postText = "<break time=\"1.0s\"/> ";
         if (sessionAttributes.get(SessionAttributeList.isLaufCompleted).toString().equalsIgnoreCase("true")) {
             postText += listContainer.getTrainIntervallAndLaufCompletedEnding();
         } else {
             postText += listContainer.getTrainLaufNotCompletedEndingForIntervall();
         }
-        postText +=  " <break time=\"0.9s\"/>";
+        postText +=  " <break time=\"0.5s\"/>";
         String musicText = listContainer.getRandomIntervall();
         String output = preText + musicText + postText;
 
+        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, output);
+        input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder().withSpeech(output).withShouldEndSession(false).build();
-        //return input.getResponseBuilder().withSpeech(output).addAudioPlayerPlayDirective(directive.getPlayBehavior(), Long.valueOf(0), null, "test.mp3", path).build();
     }
 }

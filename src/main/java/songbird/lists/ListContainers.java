@@ -16,7 +16,7 @@ public class ListContainers {
     private final String[] tipList = new String[]{
             " Durch die richtige Atemtechnik kannst du eine Ueberanstrengung der Stimme vehindern. Um diese zu ueben, lege deine Hand auf den Bauch. Achte darauf, dass deine Schultern entspannt sind und du dich nicht verkrampfst. Atme tief ein. Wenn sich deine Bauchdecke hebt, machst du es richtig. ",
             " Der ganze Koerper dient als Resonanzraum. Waehrend hohe Toene eher im Kopf und Oberkoerper schwingen, spuert man tiefe Toene meist im Bauch. Um zu spueren, wo deine Stimme klingt, versuche zuerst so zu sprechen wie eine Hexe. Ahme danach das Lachen eines Weihnachtsmannes nach. Achte dabei darauf, wo du die Schwingungen der Stimme bemerkst. Die Stimme der Hexe muessten weiter vorne, die des Weihnachtsmannes weiter hinten im Kopf zu spueren sein. ",
-            " Dein Gehoer wird trainiert, indem du Toene erkennst und anschließend nachsingst. Zu Beginn kann diese Ãœbung sehr schwierig erscheinen, da unser Gehoer vom Alltagslaerm ueberfordert sein kann. Goennne deinen Ohren eine Pause in der Stille und versuche im Alltag einzelne Geraesche bewusst herauszufiltern. ",
+            " Dein Gehoer wird trainiert, indem du Toene erkennst und anschließend nachsingst. Zu Beginn kann diese Ãœbung sehr schwierig erscheinen, da unser Gehoer vom Alltagslaerm ueberfordert sein kann. Goennne deinen Ohren eine Pause in der Stille und versuche im Alltag einzelne Geraeusche bewusst herauszufiltern. ",
             " Dein psychischer Zustand beeinflusst auch deine Stimme. Die Ursache von muskulaeren Verkrampfungen koennen auch seelische Anspannungen sein. Mit Freude zu singen ist eine gute Voraussetzung, um singen zu lernen. Zudem macht Singen auch gute Laune. ",
             " Durch Training kannst du deine Stimme und dein Gehoer verbessern. Wichtig ist es Geduld zu haben und dran zu bleiben. Nicht nur beim Singen, sondern auch bei Gespraechen und Vortraegen ist es vorteilhaft, Kontrolle ueber seine Stimme zu haben. ",
             " Die angeborene Tonreichweite eines jeden Menschens nennt man Ambitus. Durch Training kann dieser erweitert werden.  Deine entspannte Stimmlage nennt man Indiffernzlage. Diese verwendest du, wenn du dich zum Beispiel mit andern unterhaeltst. ",
@@ -34,9 +34,9 @@ public class ListContainers {
     };
 
     private final String[] workOnVoiceList = new String[] {
-            " Super. Wir beginnen mit einer Aufwaermuebung um dein Zwerchfell zu trainieren. Atme tief in deinen Bauch ein und halte die Luft an für drei Sekunden. Nun atme langsam auf den Konsonanten F aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage weiter.  ",
-            " <say-as interpret-as=\"interjection\">prima</say-as> .  Lass uns mit einer Zwerchfelluebung beginnen. Atme tief in deinen Bauch ein. Halte die Luft kurz an und atme auf F mit 5 Impulsen aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage weiter.  ",
-            " Perfekt, beginnen wir mit einer ZwerchfellUebung indem du tief Luft holst und diese für drei Sekunden haelst. Atme dann langsam auf den Konsonanten F aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage weiter.  ",
+            " Super. Wir beginnen mit einer Aufwaermuebung um dein Zwerchfell zu trainieren. Atme tief in deinen Bauch ein und halte die Luft an für drei Sekunden. Nun atme langsam auf den Konsonanten F aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage fertig.  ",
+            " <say-as interpret-as=\"interjection\">prima</say-as> .  Lass uns mit einer Zwerchfelluebung beginnen. Atme tief in deinen Bauch ein. Halte die Luft kurz an und atme auf F mit 5 Impulsen aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage fertig.  ",
+            " Perfekt, beginnen wir mit einer ZwerchfellUebung indem du tief Luft holst und diese für drei Sekunden haelst. Atme dann langsam auf den Konsonanten F aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage fertig.  ",
     };
 
     /*

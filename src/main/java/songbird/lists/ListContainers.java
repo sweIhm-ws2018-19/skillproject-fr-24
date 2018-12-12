@@ -39,17 +39,6 @@ public class ListContainers {
             " Perfekt, beginnen wir mit einer ZwerchfellUebung indem du tief Luft holst und diese für drei Sekunden haelst. Atme dann langsam auf den Konsonanten F aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage fertig.  ",
     };
 
-    /*
-    private final String[] noExampleZwerchfellList = new String[] {
-            "Wiederhole die Übung 5 mal. Wenn du die Übung beendet hast sage weiter . ",
-            "Wiederhole diese Übung 5 mal. Wenn du die Übung beendet hast sage weiter. ",
-    };
-
-    private final String[] exampleZwerchfellList = new String[] {
-            "Audiodatei Beispiel Zwerchfell 1-3. Wiederhole diese Uebung circa fuenf Mal und sage das Wort \"fertig\", sobald du fertig bist. ",
-            "Audiodatei Beispiel Zwerchfell 1-3. Wiederhole die Uebung fuenf Mal und gib mir mit \"fertig\" Bescheid, wenn du fertig bist. ",
-    };
-*/
     private final String[] questionIntervalleLaufList = new String[] {
             "Willst du nun mit Laeufen oder Intervallen fortfahren? ",
             "Moechtest du jetzt Laeufe oder Intervalle ueben? "
@@ -129,15 +118,7 @@ public class ListContainers {
     public String getRandomWorkOnVoiceCommand() {
         return workOnVoiceList[randomGenerator.nextInt(workOnVoiceList.length)];
     }
-/*
-    public String getRandomNoExampleForZwerchfellWished() {
-        return noExampleZwerchfellList[randomGenerator.nextInt(noExampleZwerchfellList.length)];
-    }
 
-    public String getRandomExampleForZwerchfellWished() {
-        return exampleZwerchfellList[randomGenerator.nextInt(exampleZwerchfellList.length)];
-    }
-*/
     public String getRandomQuestionIntervallOrLauf() {
         return questionIntervalleLaufList[randomGenerator.nextInt(questionIntervalleLaufList.length)];
     }

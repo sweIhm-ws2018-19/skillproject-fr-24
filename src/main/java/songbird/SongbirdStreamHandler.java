@@ -41,7 +41,8 @@ public class SongbirdStreamHandler extends SkillStreamHandler {
                         new RepeatIntentHandler(),
                         new WeiterExampleIntentHandler(),
                         new YesIntentHandler(),
-                        new NoIntentHandler())
+                        new NoIntentHandler(),
+                        new ErrorIntentHandler()) //muss an letzer Stelle bleiben!
                 // Add your skill id below
                 //.withSkillId("")
                 .build();

@@ -3,6 +3,7 @@ package songbird.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import songbird.lists.ListContainers;
 import songbird.lists.SessionAttributeList;
 
 import java.util.Map;
@@ -13,13 +14,13 @@ import static com.amazon.ask.request.Predicates.intentName;
 public class NoIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
         return input.matches(intentName("AMAZON.NoIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        TippsIntentHandler tipHandler = new TippsIntentHandler();
+        ListContainers listContainer = new ListContainers();
+        String speechText = listContainer.getRandomFarewellMessage();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
         Object lastIntent = sessionAttributes.get(SessionAttributeList.lastIntent);
@@ -30,14 +31,14 @@ public class NoIntentHandler implements RequestHandler {
                 && (intervallStatus.toString().equalsIgnoreCase("true")
                 || laufStatus.toString().equalsIgnoreCase("true"))) {
             return input.getResponseBuilder()
-                    .withSpeech("Auf Wiedersehen")
+                    .withSpeech(speechText)
                     .withShouldEndSession(true)
                     .build();
         } else if (intervallStatus.toString().equalsIgnoreCase("true")
                 || laufStatus.toString().equalsIgnoreCase("true")) {
             return input.getResponseBuilder()
                     .withShouldEndSession(true)
-                    .withSpeech("Auf Wiedersehen")
+                    .withSpeech(speechText)
                     .build();
         } else {
             return input.getResponseBuilder()

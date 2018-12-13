@@ -16,6 +16,7 @@ package songbird.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import songbird.lists.ListContainers;
 
 import java.util.Optional;
 
@@ -29,8 +30,10 @@ public class CancelandStopIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        ListContainers listContainer = new ListContainers();
+        String speechText = listContainer.getRandomFarewellMessage();
         return input.getResponseBuilder()
-                .withSpeech("Auf Wiedersehen")
+                .withSpeech(speechText)
                 .build();
     }
 }

@@ -179,4 +179,9 @@ public class ListContainersTest {
     public void testGetRandomIntervall() {
         Assert.assertTrue(!test.getRandomIntervall().isEmpty());
     }
+
+    @Test
+    public void testGetRandomFarewellMessage() {
+        Assert.assertTrue(!test.getRandomFarewellMessage().isEmpty());
+    }
 }

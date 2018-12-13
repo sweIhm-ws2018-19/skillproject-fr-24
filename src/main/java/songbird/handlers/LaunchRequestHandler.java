@@ -20,7 +20,6 @@ import com.amazon.ask.model.Response;
 import songbird.lists.ListContainers;
 import songbird.lists.SessionAttributeList;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 

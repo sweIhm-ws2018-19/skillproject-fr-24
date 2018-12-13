@@ -75,25 +75,13 @@ public class ListContainers {
     private final String trainIntervallLaufCompletedEnding = "Super du hast das Ende deines Trainings fuer heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ";
 
     private final String[] intervallList = new String[] {
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_9.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_10.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_11.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_12.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_13.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_14.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_15.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_16.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_17.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_18.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_19.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_20.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_qua.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_qui.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_oktave.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sept.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sex.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_sek.mp3\"/>",
-            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_ter.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int1.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int2.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int3.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int4.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int5.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int6.mp3\"/>",
+            "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int7.mp3\"/>",
     };
 
     /**

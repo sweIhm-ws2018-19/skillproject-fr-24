@@ -34,6 +34,7 @@ public class CancelandStopIntentHandler implements RequestHandler {
         String speechText = listContainer.getRandomFarewellMessage();
         return input.getResponseBuilder()
                 .withSpeech(speechText)
+                .withShouldEndSession(true)
                 .build();
     }
 }

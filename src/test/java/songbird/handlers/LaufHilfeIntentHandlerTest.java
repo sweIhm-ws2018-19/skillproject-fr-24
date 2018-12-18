@@ -26,10 +26,8 @@ public class LaufHilfeIntentHandlerTest {
     AttributesManager mockAtrManager = mock(AttributesManager.class);
 
     @Before
-    public void setUp(){
+    public void setUp() {
         handler = new LaufHilfeIntentHandler();
-        when(mockAtrManager.getPersistentAttributes()).thenReturn(new HashMap<>());
-        when(mockAtrManager.getRequestAttributes()).thenReturn(new HashMap<>());
         sessionAttributes = new HashMap<>();
         sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
         when(mockInputHandler.getAttributesManager()).thenReturn(mockAtrManager);
@@ -39,7 +37,6 @@ public class LaufHilfeIntentHandlerTest {
     @Test
     public void testCanHandle() {
         when(mockInputHandler.matches(any())).thenReturn(true);
-        when(mockInputHandler.getResponseBuilder()).thenReturn(new ResponseBuilder());
         Assert.assertTrue(handler.canHandle(mockInputHandler));
 
     }
@@ -47,7 +44,9 @@ public class LaufHilfeIntentHandlerTest {
     @Test
     public void testHandle() {
         when(mockInputHandler.getResponseBuilder()).thenReturn(new ResponseBuilder());
-        Assert.assertFalse(handler.handle(mockInputHandler).toString().isEmpty());
+        String actual = handler.handle(mockInputHandler).toString();
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertTrue(actual.contains("Als Lauf bezeichnet ") || actual.contains("Laeufe sind in der Musik "));
         Assert.assertEquals(SessionAttributeList.statusHilfe, mockInputHandler.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent));
     }
 }

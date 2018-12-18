@@ -40,13 +40,13 @@ public class ListContainersTest {
     @Test
     public void testGetListField() {
 
-        String expectedIndex6 = " Um lange Toene besser und  stabil zu halten, musst du kontrolliertes Atmen  und die richtige Tonlage verbinden. Um dies  zu ueben, atme tief ein und singe in einer angenehmen, mittleren Stimmlage auf La oder Du aus. Fokussiere dich auf die Stabilitaet des Tons und halte ihn solange wie moeglich. ";
+        String expectedIndex6 =  " Um lange Toene besser und stabil zu halten, musst du kontrolliertes Atmen und die richtige Tonlage verbinden. Um dies zu ueben, atme tief ein und singe in einer angenehmen, mittleren Stimmlage auf La oder Du aus. Fokussiere dich auf die Stabilitaet des Tons und halte ihn solange wie moeglich. ";
         String expectedIndex3 = " Dein psychischer Zustand beeinflusst auch deine Stimme. Die Ursache von muskulaeren Verkrampfungen koennen auch seelische Anspannungen sein. Mit Freude zu singen ist eine gute Voraussetzung, um singen zu lernen. Zudem macht Singen auch gute Laune. ";
         String expectedIndex0 = " Durch die richtige Atemtechnik kannst du eine Ueberanstrengung der Stimme vehindern. Um diese zu ueben, lege deine Hand auf den Bauch. Achte darauf, dass deine Schultern entspannt sind und du dich nicht verkrampfst. Atme tief ein. Wenn sich deine Bauchdecke hebt, machst du es richtig. ";
 
-        Assert.assertEquals(test.getListField(6), expectedIndex6);
-        Assert.assertEquals(test.getListField(3), expectedIndex3);
-        Assert.assertEquals(test.getListField(0), expectedIndex0);
+        Assert.assertEquals(expectedIndex6, test.getListField(6));
+        Assert.assertEquals(expectedIndex3, test.getListField(3));
+        Assert.assertEquals(expectedIndex0, test.getListField(0));
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
@@ -88,7 +88,7 @@ public class ListContainersTest {
 
     @Test
     public void testGetTrainIntervallAndLaufCompletedEnding() {
-        Assert.assertEquals(test.getTrainIntervallAndLaufCompletedEnding(), "Super du hast das Ende deines Trainings fuer heute erreicht moechtest du zum Abschluss noch einen Tipp hoeren? ");
+        Assert.assertEquals("Super du hast das Ende deines Trainings fuer heute erreicht, moechtest du zum Abschluss noch einen Tipp hoeren? ", test.getTrainIntervallAndLaufCompletedEnding());
     }
 
     @Test

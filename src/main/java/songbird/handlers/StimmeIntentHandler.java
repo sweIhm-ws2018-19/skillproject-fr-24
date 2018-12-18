@@ -41,27 +41,6 @@ public class StimmeIntentHandler implements RequestHandler {
 
         String speechText = listContainer.getRandomWorkOnVoiceCommand();
         speechText += "<break time=\"1.0s\"/>";
-        /*
-        Request request = input.getRequestEnvelope().getRequest();
-        IntentRequest intentRequest = (IntentRequest) request;
-        Intent intent = intentRequest.getIntent();
-
-        Map<String, Slot> slots = intent.getSlots();
-        String example = slots.get("BeispielZwerchfell").getValue();
-
-
-        //check if to play example or not
-        if (slots.get("BeispielZwerchfell").toString().contains("True")) {
-            speechText = listContainer.getRandomExampleForZwerchfellWished();
-            speechText += "<break time=\"0.9s\"/>. ";
-            speechText += listContainer.getRandomQuestionIntervallOrLauf();
-        } else if (slots.get("BeispielZwerchfell").toString().contains("False")) {
-            speechText = listContainer.getRandomNoExampleForZwerchfellWished();
-            speechText += "<break time=\"8.0s\"/>. ";
-            speechText += listContainer.getRandomQuestionIntervallOrLauf();
-        } else {
-            return input.getResponseBuilder().withShouldEndSession(false).addDelegateDirective(null).build();
-        }*/
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
         sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class IntervallHilfeIntentHandler implements RequestHandler{
+public class IntervallHilfeIntentHandler implements RequestHandler {
 
 
     @Override

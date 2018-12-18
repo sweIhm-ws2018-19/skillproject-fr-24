@@ -33,7 +33,16 @@ public class CancelandStopIntentHandlerTest {
     @Test
     public void testHandle() {
         when(mockInputHandler.getResponseBuilder()).thenReturn(new ResponseBuilder());
-
-        Assert.assertFalse(handler.handle(mockInputHandler).toString().isEmpty());
+        String actual = handler.handle(mockInputHandler).toString();
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertTrue(actual.contains("Bis bald")
+                || actual.contains("Bis zum naechsten Mal")
+                || actual.contains("Wir hoeren voneinander")
+                || actual.contains("Servus")
+                || actual.contains("Adieu")
+                || actual.contains("Hoffentlich bis morgen")
+                || actual.contains("Hasta la vista")
+                || actual.contains("Ich hoffe wir hoeren uns morgen")
+                || actual.contains("Komm morgen wieder vorbei"));
     }
 }

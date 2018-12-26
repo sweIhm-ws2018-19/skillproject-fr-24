@@ -12,14 +12,14 @@ import songbird.lists.SessionAttributeList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+public class LaufIntHilfeIntentHandlerTest {
 
-public class IntervallHilfeIntentHandlerTest {
-
-    IntervallHilfeIntentHandler handler;
+    LaufIntHilfeIntentHandler handler;
     Map<String, Object> sessionAttributes;
 
     @Mock
@@ -28,31 +28,29 @@ public class IntervallHilfeIntentHandlerTest {
 
     @Before
     public void setUp() {
-        handler = new IntervallHilfeIntentHandler();
+        handler = new LaufIntHilfeIntentHandler();
         sessionAttributes = new HashMap<>();
         sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
-        sessionAttributes.put(SessionAttributeList.forRepeatIntent, "");
+
+        when(mockHandlerInput.matches(any())).thenReturn(true);
+        when(mockHandlerInput.getResponseBuilder()).thenReturn(new ResponseBuilder());
         when(mockHandlerInput.getAttributesManager()).thenReturn(mockAttrManager);
         when(mockAttrManager.getSessionAttributes()).thenReturn(sessionAttributes);
     }
 
     @Test
     public void testCanHandle() {
-        when(mockHandlerInput.matches(any())).thenReturn(true);
-
         Assert.assertTrue(handler.canHandle(mockHandlerInput));
     }
 
     @Test
     public void testHandle() {
-        when(mockHandlerInput.getResponseBuilder()).thenReturn(new ResponseBuilder());
-        String actual = handler.handle(mockHandlerInput).toString();
-        String actualRepeatText = sessionAttributes.get(SessionAttributeList.forRepeatIntent).toString();
+        sessionAttributes.put(SessionAttributeList.forRepeatIntent, "");
 
-        Assert.assertEquals(SessionAttributeList.statusHilfe, sessionAttributes.get(SessionAttributeList.lastIntent));
-        Assert.assertTrue(actual.contains("Als Intervall bezeichnet man ")
-                || actual.contains("Intervalle sind"));
-        Assert.assertTrue(actualRepeatText.contains("Als Intervall bezeichnet man")
-        || actualRepeatText.contains("Intervalle sind"));
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertEquals(SessionAttributeList.statusHilfe, mockAttrManager.getSessionAttributes().get(SessionAttributeList.lastIntent).toString());
+        Assert.assertFalse(mockAttrManager.getSessionAttributes().get(SessionAttributeList.forRepeatIntent).toString().isEmpty());
+        Assert.assertTrue(actual.contains("Bei Intervallen geht es in der Musik")
+                || actual.contains("zwischen zwei gleichzeitig oder nacheinander erklingenden"));
     }
 }

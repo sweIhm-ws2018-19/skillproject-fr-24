@@ -12,6 +12,7 @@ import java.util.Optional;
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class NoIntentHandler implements RequestHandler {
+
     @Override
     public boolean canHandle(HandlerInput input) {
         return input.matches(intentName("AMAZON.NoIntent"));
@@ -45,9 +46,6 @@ public class NoIntentHandler implements RequestHandler {
                     .withSpeech("")
                     .withShouldEndSession(false).build();
         }
-
-
-
 
 
     }

@@ -2,6 +2,7 @@ package songbird.handlers;
 
 import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
+import com.amazon.ask.response.ResponseBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +33,7 @@ public class IntervallTrainingIntentHandlerTest {
 
         when(mockHandlerInput.getAttributesManager()).thenReturn(mockAttrManager);
         when(mockAttrManager.getSessionAttributes()).thenReturn(sessionAttributes);
+        when(mockHandlerInput.getResponseBuilder()).thenReturn(new ResponseBuilder());
     }
 
     @Test
@@ -59,6 +61,27 @@ public class IntervallTrainingIntentHandlerTest {
     }
 
     @Test
-    public void testHandle() {
+    public void testHandleLaufNotCompleted() {
+        sessionAttributes.put(SessionAttributeList.lastIntent, "");
+        sessionAttributes.put(SessionAttributeList.forRepeatIntent, "");
+        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.FALSE);
+
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertTrue(actual.contains("songbirdrolebucket")
+                && actual.contains("Los gehts")
+                && actual.contains("du nun weiter machen mit L"));
+        Assert.assertFalse(mockHandlerInput.getAttributesManager().getSessionAttributes().get(SessionAttributeList.forRepeatIntent).toString().isEmpty());
+        Assert.assertEquals(SessionAttributeList.statusIntervall, mockAttrManager.getSessionAttributes().get(SessionAttributeList.lastIntent).toString());
+        Assert.assertEquals(Boolean.TRUE, mockAttrManager.getSessionAttributes().get(SessionAttributeList.isIntervallCompleted));
+    }
+
+    @Test
+    public void testHandleLaufCompleted() {
+        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.TRUE);
+
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertTrue(actual.contains("Super du hast das Ende deines"));
     }
 }

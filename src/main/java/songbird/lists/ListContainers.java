@@ -95,6 +95,23 @@ public class ListContainers {
             "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervall/int_ter.mp3\"/>",
     };
 
+
+
+
+
+    private String[] farewellMessages = new String[] {
+            " Bis bald. ",
+            " Bis zum naechsten Mal. ",
+            " Wir hoeren voneinander. ",
+            " Servus. ",
+            " Adieu. ",
+            " Hoffentlich bis morgen. ",
+            " Hasta la vista. ",
+            " Schoen, dass du da warst. Ich hoffe wir hoeren uns morgen wieder. ",
+            " Komm morgen wieder vorbei. Denn vergiss nicht, wie wichtig das taegliche Ueben für deine Stimme ist. "
+    };
+
+
     /**
      * Constructor of TipList. Sets up the map for the tipList.
      */
@@ -181,6 +198,10 @@ public class ListContainers {
         tipListMapWasTipSaid.replace(String.valueOf(randomInt), true);
 
         return tipList[randomInt];
+    }
+
+    public String getRandomFarewellMessage() {
+        return farewellMessages[randomGenerator.nextInt(farewellMessages.length)];
     }
 
     /**

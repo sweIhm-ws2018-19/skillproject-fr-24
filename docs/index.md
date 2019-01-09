@@ -1,1 +1,2 @@
-<img src="images/SystemkontextAlexaSkill.png" alt="Systemkontext" class="inline"/>
+
+<img src="images/Klassendiagramm.JPG" alt="Klassendiagramm" class="inline"/>

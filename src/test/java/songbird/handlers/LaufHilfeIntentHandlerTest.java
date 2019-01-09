@@ -37,6 +37,7 @@ public class LaufHilfeIntentHandlerTest {
     @Test
     public void testCanHandle() {
         when(mockInputHandler.matches(any())).thenReturn(true);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_STIMME);
         Assert.assertTrue(handler.canHandle(mockInputHandler));
 
     }
@@ -46,6 +47,5 @@ public class LaufHilfeIntentHandlerTest {
         String actual = handler.handle(mockInputHandler).toString();
         Assert.assertFalse(actual.isEmpty());
         Assert.assertTrue(actual.contains("Als Lauf bezeichnet ") || actual.contains("Laeufe sind in der Musik "));
-        Assert.assertEquals(SessionAttributeList.STATUS_HILFE, mockInputHandler.getAttributesManager().getSessionAttributes().get(SessionAttributeList.LAST_INTENT));
     }
 }

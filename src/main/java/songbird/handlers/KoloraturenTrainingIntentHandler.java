@@ -17,11 +17,11 @@ import static com.amazon.ask.request.Predicates.intentName;
 public class KoloraturenTrainingIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
+        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.LAST_INTENT);
         return input.matches(intentName("KoloraturenTrainingIntent"))
-                && (status.toString().equals(SessionAttributeList.statusStimme)
-                || status.toString().equals(SessionAttributeList.statusHilfe)
-                || status.toString().equals(SessionAttributeList.statusIntervall));
+                && (status.toString().equals(SessionAttributeList.STATUS_STIMME)
+                || status.toString().equals(SessionAttributeList.STATUS_HILFE)
+                || status.toString().equals(SessionAttributeList.STATUS_INTERVALL));
     }
 
 
@@ -30,18 +30,14 @@ public class KoloraturenTrainingIntentHandler implements RequestHandler {
         ListContainers listContainer = new ListContainers();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusLaufe);
-        sessionAttributes.replace(SessionAttributeList.isLaufCompleted, Boolean.TRUE);
-
-        Request request = input.getRequestEnvelope().getRequest();
-        IntentRequest intentRequest = (IntentRequest) request;
-        Intent intent = intentRequest.getIntent();
+        sessionAttributes.replace(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_LAUFE);
+        sessionAttributes.replace(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.TRUE);
 
         String preText = listContainer.getSampleTrainLauf();
         preText += " <break time=\"0.9s\"/> ";
         String musicText = "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/laeufe.mp3\"/>";
         String postText = " <break time=\"0.9s\"/> ";
-        if (sessionAttributes.get(SessionAttributeList.isIntervallCompleted).toString().equalsIgnoreCase("true")) {
+        if (sessionAttributes.get(SessionAttributeList.IS_INTERVALL_COMPLETED).toString().equalsIgnoreCase("true")) {
             postText += listContainer.getTrainIntervallAndLaufCompletedEnding();
         } else {
             postText += listContainer.getTrainIntervallNotCompletedEndingForLauf();
@@ -49,7 +45,7 @@ public class KoloraturenTrainingIntentHandler implements RequestHandler {
         postText += " <break time=\"0.5s\"/> ";
         String output = preText + musicText + postText;
 
-        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, output);
+        sessionAttributes.replace(SessionAttributeList.FOR_REPEAT_INTENT, output);
         input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder().withSpeech(output).withShouldEndSession(false).build();

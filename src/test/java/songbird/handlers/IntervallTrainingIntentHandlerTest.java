@@ -12,7 +12,6 @@ import songbird.lists.SessionAttributeList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -38,7 +37,7 @@ public class IntervallTrainingIntentHandlerTest {
 
     @Test
     public void testCanHandleStatusStimme() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_STIMME);
         when(mockHandlerInput.matches(any())).thenReturn(true);
 
         Assert.assertTrue(handler.canHandle(mockHandlerInput));
@@ -46,7 +45,7 @@ public class IntervallTrainingIntentHandlerTest {
 
     @Test
     public void testCanHandleStatusHilfe() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusHilfe);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_HILFE);
         when(mockHandlerInput.matches(any())).thenReturn(true);
 
         Assert.assertTrue(handler.canHandle(mockHandlerInput));
@@ -54,7 +53,7 @@ public class IntervallTrainingIntentHandlerTest {
 
     @Test
     public void testCanHandleStatusLauefe() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusLaufe);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_LAUFE);
         when(mockHandlerInput.matches(any())).thenReturn(true);
 
         Assert.assertTrue(handler.canHandle(mockHandlerInput));
@@ -62,24 +61,24 @@ public class IntervallTrainingIntentHandlerTest {
 
     @Test
     public void testHandleLaufNotCompleted() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, "");
-        sessionAttributes.put(SessionAttributeList.forRepeatIntent, "");
-        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
-        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, "");
+        sessionAttributes.put(SessionAttributeList.FOR_REPEAT_INTENT, "");
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.FALSE);
 
         String actual = handler.handle(mockHandlerInput).toString();
         Assert.assertTrue(actual.contains("songbirdrolebucket")
                 && actual.contains("Los gehts")
                 && actual.contains("du nun weiter machen mit L"));
-        Assert.assertFalse(mockHandlerInput.getAttributesManager().getSessionAttributes().get(SessionAttributeList.forRepeatIntent).toString().isEmpty());
-        Assert.assertEquals(SessionAttributeList.statusIntervall, mockAttrManager.getSessionAttributes().get(SessionAttributeList.lastIntent).toString());
-        Assert.assertEquals(Boolean.TRUE, mockAttrManager.getSessionAttributes().get(SessionAttributeList.isIntervallCompleted));
+        Assert.assertFalse(mockHandlerInput.getAttributesManager().getSessionAttributes().get(SessionAttributeList.FOR_REPEAT_INTENT).toString().isEmpty());
+        Assert.assertEquals(SessionAttributeList.STATUS_INTERVALL, mockAttrManager.getSessionAttributes().get(SessionAttributeList.LAST_INTENT).toString());
+        Assert.assertEquals(Boolean.TRUE, mockAttrManager.getSessionAttributes().get(SessionAttributeList.IS_INTERVALL_COMPLETED));
     }
 
     @Test
     public void testHandleLaufCompleted() {
-        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
-        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.TRUE);
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.TRUE);
 
         String actual = handler.handle(mockHandlerInput).toString();
         Assert.assertTrue(actual.contains("Super du hast das Ende deines"));

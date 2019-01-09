@@ -30,8 +30,8 @@ public class IntervallHilfeIntentHandlerTest {
     public void setUp() {
         handler = new IntervallHilfeIntentHandler();
         sessionAttributes = new HashMap<>();
-        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
-        sessionAttributes.put(SessionAttributeList.forRepeatIntent, "");
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_STIMME);
+        sessionAttributes.put(SessionAttributeList.FOR_REPEAT_INTENT, "");
         when(mockHandlerInput.getAttributesManager()).thenReturn(mockAttrManager);
         when(mockAttrManager.getSessionAttributes()).thenReturn(sessionAttributes);
     }
@@ -47,9 +47,9 @@ public class IntervallHilfeIntentHandlerTest {
     public void testHandle() {
         when(mockHandlerInput.getResponseBuilder()).thenReturn(new ResponseBuilder());
         String actual = handler.handle(mockHandlerInput).toString();
-        String actualRepeatText = sessionAttributes.get(SessionAttributeList.forRepeatIntent).toString();
+        String actualRepeatText = sessionAttributes.get(SessionAttributeList.FOR_REPEAT_INTENT).toString();
 
-        Assert.assertEquals(SessionAttributeList.statusHilfe, sessionAttributes.get(SessionAttributeList.lastIntent));
+        Assert.assertEquals(SessionAttributeList.STATUS_HILFE, sessionAttributes.get(SessionAttributeList.LAST_INTENT));
         Assert.assertTrue(actual.contains("Als Intervall bezeichnet man ")
                 || actual.contains("Intervalle sind"));
         Assert.assertTrue(actualRepeatText.contains("Als Intervall bezeichnet man")

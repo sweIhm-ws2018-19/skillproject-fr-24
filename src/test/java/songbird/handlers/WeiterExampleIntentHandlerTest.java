@@ -2,6 +2,7 @@ package songbird.handlers;
 
 import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
+import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,14 +12,15 @@ import songbird.lists.SessionAttributeList;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class LaufHilfeIntentHandlerTest {
+public class WeiterExampleIntentHandlerTest {
 
-    LaufHilfeIntentHandler handler;
+    WeiterExampleIntentHandler handler;
     Map<String, Object> sessionAttributes;
 
     @Mock
@@ -27,25 +29,25 @@ public class LaufHilfeIntentHandlerTest {
 
     @Before
     public void setUp() {
-        handler = new LaufHilfeIntentHandler();
+        handler = new WeiterExampleIntentHandler();
         sessionAttributes = new HashMap<>();
         when(mockInputHandler.getAttributesManager()).thenReturn(mockAtrManager);
         when(mockAtrManager.getSessionAttributes()).thenReturn(sessionAttributes);
         when(mockInputHandler.getResponseBuilder()).thenReturn(new ResponseBuilder());
+        when(mockInputHandler.matches(any())).thenReturn(true);
     }
 
     @Test
     public void testCanHandle() {
-        when(mockInputHandler.matches(any())).thenReturn(true);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_STIMME);
         Assert.assertTrue(handler.canHandle(mockInputHandler));
-
     }
 
     @Test
     public void testHandle() {
-        String actual = handler.handle(mockInputHandler).toString();
-        Assert.assertFalse(actual.isEmpty());
-        Assert.assertTrue(actual.contains("Als Lauf bezeichnet ") || actual.contains("Laeufe sind in der Musik "));
-        Assert.assertEquals(SessionAttributeList.STATUS_HILFE, mockInputHandler.getAttributesManager().getSessionAttributes().get(SessionAttributeList.LAST_INTENT));
+        sessionAttributes.put(SessionAttributeList.FOR_REPEAT_INTENT, "");
+        Optional<Response> actual = handler.handle(mockInputHandler);
+        Assert.assertFalse(actual.toString().isEmpty());
+        Assert.assertFalse(mockAtrManager.getSessionAttributes().get(SessionAttributeList.FOR_REPEAT_INTENT).toString().isEmpty());
     }
 }

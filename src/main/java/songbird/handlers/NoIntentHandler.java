@@ -24,11 +24,11 @@ public class NoIntentHandler implements RequestHandler {
         String speechText = listContainer.getRandomFarewellMessage();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        Object lastIntent = sessionAttributes.get(SessionAttributeList.lastIntent);
-        Object intervallStatus = sessionAttributes.get(SessionAttributeList.isIntervallCompleted);
-        Object laufStatus = sessionAttributes.get(SessionAttributeList.isLaufCompleted);
+        Object lastIntent = sessionAttributes.get(SessionAttributeList.LAST_INTENT);
+        Object intervallStatus = sessionAttributes.get(SessionAttributeList.IS_INTERVALL_COMPLETED);
+        Object laufStatus = sessionAttributes.get(SessionAttributeList.IS_LAUF_COMPLETED);
 
-        if (lastIntent.toString().equals(SessionAttributeList.statusTipp)
+        if (lastIntent.toString().equals(SessionAttributeList.STATUS_TIPP)
                 && (intervallStatus.toString().equalsIgnoreCase("true")
                 || laufStatus.toString().equalsIgnoreCase("true"))) {
             return input.getResponseBuilder()

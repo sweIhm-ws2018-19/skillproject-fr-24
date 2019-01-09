@@ -3,6 +3,7 @@ package songbird.handlers;
 import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.response.ResponseBuilder;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -38,31 +39,60 @@ public class NoIntentHandlerTest {
 
     @Test
     public void testCanHandle() {
+        Assert.assertTrue(handler.canHandle(mockHandlerInput));
     }
 
     @Test
-    public void testHandleStatusTipp() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusTipp);
+    public void testHandleStatusTippStatusIntervall() {
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_TIPP);
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.TRUE);
+
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertTrue(handler.handle(mockHandlerInput).get().getShouldEndSession());
+    }
+
+    @Test
+    public void testHandleStatusTippStatusLauf() {
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_TIPP);
+        sessionAttributes.put(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.TRUE);
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.FALSE);
+
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertTrue(handler.handle(mockHandlerInput).get().getShouldEndSession());
     }
 
     @Test
     public void testHandleIntervallStatusTrue() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, "");
-        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.TRUE);
-        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, "");
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.TRUE);
+        sessionAttributes.put(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.FALSE);
+
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertTrue(handler.handle(mockHandlerInput).get().getShouldEndSession());
     }
 
     @Test
     public void testHandleLaufStatusTrue() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, "");
-        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
-        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.TRUE);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, "");
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.TRUE);
+
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertTrue(handler.handle(mockHandlerInput).get().getShouldEndSession());
     }
 
     @Test
     public void testHandleInvalidNo() {
-        sessionAttributes.put(SessionAttributeList.lastIntent, "");
-        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
-        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, "");
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.FALSE);
+
+        String actual = handler.handle(mockHandlerInput).toString();
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertFalse(handler.handle(mockHandlerInput).get().getShouldEndSession());
     }
 }

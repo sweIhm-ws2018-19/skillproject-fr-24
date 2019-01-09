@@ -12,7 +12,6 @@ import songbird.lists.SessionAttributeList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -30,7 +29,7 @@ public class LaufIntHilfeIntentHandlerTest {
     public void setUp() {
         handler = new LaufIntHilfeIntentHandler();
         sessionAttributes = new HashMap<>();
-        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusStimme);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_STIMME);
 
         when(mockHandlerInput.matches(any())).thenReturn(true);
         when(mockHandlerInput.getResponseBuilder()).thenReturn(new ResponseBuilder());
@@ -45,11 +44,11 @@ public class LaufIntHilfeIntentHandlerTest {
 
     @Test
     public void testHandle() {
-        sessionAttributes.put(SessionAttributeList.forRepeatIntent, "");
+        sessionAttributes.put(SessionAttributeList.FOR_REPEAT_INTENT, "");
 
         String actual = handler.handle(mockHandlerInput).toString();
-        Assert.assertEquals(SessionAttributeList.statusHilfe, mockAttrManager.getSessionAttributes().get(SessionAttributeList.lastIntent).toString());
-        Assert.assertFalse(mockAttrManager.getSessionAttributes().get(SessionAttributeList.forRepeatIntent).toString().isEmpty());
+        Assert.assertEquals(SessionAttributeList.STATUS_HILFE, mockAttrManager.getSessionAttributes().get(SessionAttributeList.LAST_INTENT).toString());
+        Assert.assertFalse(mockAttrManager.getSessionAttributes().get(SessionAttributeList.FOR_REPEAT_INTENT).toString().isEmpty());
         Assert.assertTrue(actual.contains("Bei Intervallen geht es in der Musik")
                 || actual.contains("zwischen zwei gleichzeitig oder nacheinander erklingenden"));
     }

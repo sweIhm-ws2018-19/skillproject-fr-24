@@ -44,9 +44,9 @@ public class ListContainersTest {
         String expectedIndex3 = " Dein psychischer Zustand beeinflusst auch deine Stimme. Die Ursache von muskulaeren Verkrampfungen koennen auch seelische Anspannungen sein. Mit Freude zu singen ist eine gute Voraussetzung, um singen zu lernen. Zudem macht Singen auch gute Laune. ";
         String expectedIndex0 = " Durch die richtige Atemtechnik kannst du eine Ueberanstrengung der Stimme verhindern. Um diese zu ueben, lege deine Hand auf den Bauch. Achte darauf, dass deine Schultern entspannt sind und du dich nicht verkrampfst. Atme tief ein. Wenn sich deine Bauchdecke hebt, machst du es richtig. ";
 
-        Assert.assertEquals(expectedIndex6, test.getListField(6));
-        Assert.assertEquals(expectedIndex3, test.getListField(3));
-        Assert.assertEquals(expectedIndex0, test.getListField(0));
+        Assert.assertEquals(test.getListField(6), expectedIndex6);
+        Assert.assertEquals(test.getListField(3), expectedIndex3);
+        Assert.assertEquals(test.getListField(0), expectedIndex0);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
@@ -73,7 +73,7 @@ public class ListContainersTest {
             }
         }
 
-        Assert.assertEquals(countSaidTips, 1);
+        Assert.assertEquals(1, countSaidTips);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -93,17 +93,17 @@ public class ListContainersTest {
 
     @Test
     public void testGetTrainLaufNotCompletedEndingForIntervall() {
-        Assert.assertEquals(test.getTrainLaufNotCompletedEndingForIntervall(), "Moechtest du nun weiter machen mit Laeufen? ");
+        Assert.assertEquals("Moechtest du nun weiter machen mit Laeufen? ", test.getTrainLaufNotCompletedEndingForIntervall());
     }
 
     @Test
     public void testGetTrainIntervallNotCompletedEndingForLauf() {
-        Assert.assertEquals(test.getTrainIntervallNotCompletedEndingForLauf(), "Moechtest du nun weiter machen mit Intervallen? ");
+        Assert.assertEquals("Moechtest du nun weiter machen mit Intervallen? ", test.getTrainIntervallNotCompletedEndingForLauf());
     }
 
     @Test
     public void testGetTrainInvertallStart() {
-        Assert.assertEquals(test.getTrainInvertallStart(), "Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. ");
+        Assert.assertEquals("Los gehts. Zuerst spiele ich dir die Intervalle vor und du steigst ein. ", test.getTrainInvertallStart());
     }
 
     @Test
@@ -117,13 +117,13 @@ public class ListContainersTest {
         testMap.put("5", Boolean.FALSE);
         testMap.put("6", Boolean.FALSE);
         test.setMap(testMap);
-        Assert.assertEquals(test.getMap(), testMap);
+        Assert.assertEquals(testMap, test.getMap());
     }
 
     @Test
     public void testGetValueFromMap() {
         boolean testValue = test.getValueFromMap(3);
-        Assert.assertEquals(testValue, false);
+        Assert.assertEquals(false,  testValue);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)

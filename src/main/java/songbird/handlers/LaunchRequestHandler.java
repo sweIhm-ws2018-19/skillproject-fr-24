@@ -26,6 +26,7 @@ import java.util.Optional;
 import static com.amazon.ask.request.Predicates.requestType;
 
 public class LaunchRequestHandler implements RequestHandler {
+
     @Override
     public boolean canHandle(HandlerInput input) {
         return input.matches(requestType(LaunchRequest.class));
@@ -39,10 +40,10 @@ public class LaunchRequestHandler implements RequestHandler {
                 + listContainer.getRandomWelcomeMessage();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.put(SessionAttributeList.isIntervallCompleted, Boolean.FALSE);
-        sessionAttributes.put(SessionAttributeList.isLaufCompleted, Boolean.FALSE);
-        sessionAttributes.put(SessionAttributeList.lastIntent, SessionAttributeList.statusWelcome);
-        sessionAttributes.put(SessionAttributeList.forRepeatIntent, speechText);
+        sessionAttributes.put(SessionAttributeList.IS_INTERVALL_COMPLETED, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.IS_LAUF_COMPLETED, Boolean.FALSE);
+        sessionAttributes.put(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_WELCOME);
+        sessionAttributes.put(SessionAttributeList.FOR_REPEAT_INTENT, speechText);
         sessionAttributes.putAll(listContainer.getMap());
         input.getAttributesManager().setRequestAttributes(sessionAttributes);
 

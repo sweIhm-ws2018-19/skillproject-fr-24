@@ -16,9 +16,9 @@ public class LaufIntHilfeIntentHandler implements RequestHandler{
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
+        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.LAST_INTENT);
         return input.matches(intentName("LaufIntHilfeIntent"))
-                && status.equals(SessionAttributeList.statusStimme);
+                && status.equals(SessionAttributeList.STATUS_STIMME);
     }
 
     @Override
@@ -27,8 +27,8 @@ public class LaufIntHilfeIntentHandler implements RequestHandler{
         String speechText = help.getRandomExplanationForBoth();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusHilfe);
-        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, speechText);
+        sessionAttributes.replace(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_HILFE);
+        sessionAttributes.replace(SessionAttributeList.FOR_REPEAT_INTENT, speechText);
         input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder()

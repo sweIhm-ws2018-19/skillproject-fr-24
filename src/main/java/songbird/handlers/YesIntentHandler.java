@@ -14,7 +14,6 @@ import static com.amazon.ask.request.Predicates.intentName;
 public class YesIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
         return input.matches(intentName("AMAZON.YesIntent"));
     }
 
@@ -25,15 +24,15 @@ public class YesIntentHandler implements RequestHandler {
         TippsIntentHandler tipHandler = new TippsIntentHandler();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        Object intervallStatus = sessionAttributes.get(SessionAttributeList.isIntervallCompleted);
-        Object laufStatus = sessionAttributes.get(SessionAttributeList.isLaufCompleted);
-        Object lastIntent = sessionAttributes.get(SessionAttributeList.lastIntent);
+        Object intervallStatus = sessionAttributes.get(SessionAttributeList.IS_INTERVALL_COMPLETED);
+        Object laufStatus = sessionAttributes.get(SessionAttributeList.IS_LAUF_COMPLETED);
+        Object lastIntent = sessionAttributes.get(SessionAttributeList.LAST_INTENT);
 
-        if (lastIntent.toString().equals(SessionAttributeList.statusTipp) || (intervallStatus.toString().equalsIgnoreCase("true") && laufStatus.toString().equalsIgnoreCase("true"))) {
+        if (lastIntent.toString().equals(SessionAttributeList.STATUS_TIPP) || (intervallStatus.toString().equalsIgnoreCase("true") && laufStatus.toString().equalsIgnoreCase("true"))) {
             return tipHandler.handle(input);
-        } else if (lastIntent.toString().equals(SessionAttributeList.statusIntervall) && laufStatus.toString().equalsIgnoreCase("false")) {
+        } else if (lastIntent.toString().equals(SessionAttributeList.STATUS_INTERVALL) && laufStatus.toString().equalsIgnoreCase("false")) {
             return laufHandle.handle(input);
-        } else if (lastIntent.toString().equals(SessionAttributeList.statusLaufe) && intervallStatus.toString().equalsIgnoreCase("false")) {
+        } else if (lastIntent.toString().equals(SessionAttributeList.STATUS_LAUFE) && intervallStatus.toString().equalsIgnoreCase("false")) {
             return intervallHandle.handle(input);
         } else {
 

@@ -17,7 +17,7 @@ public class RepeatIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        Object repeatText = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.forRepeatIntent);
+        Object repeatText = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.FOR_REPEAT_INTENT);
         String speechText = repeatText.toString();
 
         return input.getResponseBuilder()

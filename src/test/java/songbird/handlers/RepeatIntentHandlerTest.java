@@ -2,6 +2,7 @@ package songbird.handlers;
 
 import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
+import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,14 +12,15 @@ import songbird.lists.SessionAttributeList;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class LaufHilfeIntentHandlerTest {
+public class RepeatIntentHandlerTest {
 
-    LaufHilfeIntentHandler handler;
+    RepeatIntentHandler handler;
     Map<String, Object> sessionAttributes;
 
     @Mock
@@ -27,8 +29,9 @@ public class LaufHilfeIntentHandlerTest {
 
     @Before
     public void setUp() {
-        handler = new LaufHilfeIntentHandler();
+        handler = new RepeatIntentHandler();
         sessionAttributes = new HashMap<>();
+        sessionAttributes.put(SessionAttributeList.FOR_REPEAT_INTENT, "test this stuff!");
         when(mockInputHandler.getAttributesManager()).thenReturn(mockAtrManager);
         when(mockAtrManager.getSessionAttributes()).thenReturn(sessionAttributes);
         when(mockInputHandler.getResponseBuilder()).thenReturn(new ResponseBuilder());
@@ -43,9 +46,11 @@ public class LaufHilfeIntentHandlerTest {
 
     @Test
     public void testHandle() {
-        String actual = handler.handle(mockInputHandler).toString();
-        Assert.assertFalse(actual.isEmpty());
-        Assert.assertTrue(actual.contains("Als Lauf bezeichnet ") || actual.contains("Laeufe sind in der Musik "));
-        Assert.assertEquals(SessionAttributeList.STATUS_HILFE, mockInputHandler.getAttributesManager().getSessionAttributes().get(SessionAttributeList.LAST_INTENT));
+        Optional<Response> actualObj = handler.handle(mockInputHandler);
+        Boolean actualPresent = actualObj.isPresent();
+
+        Assert.assertTrue(actualPresent);
+        Assert.assertTrue(actualObj.toString().contains("test"));
+        Assert.assertFalse(actualObj.get().getShouldEndSession());
     }
 }

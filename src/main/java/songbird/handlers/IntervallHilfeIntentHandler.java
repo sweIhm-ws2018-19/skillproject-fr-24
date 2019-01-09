@@ -16,9 +16,9 @@ public class IntervallHilfeIntentHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
+        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.LAST_INTENT);
         return input.matches(intentName("IntervallHilfeIntent"))
-                && status.toString().equals(SessionAttributeList.statusStimme);
+                && status.toString().equals(SessionAttributeList.STATUS_STIMME);
     }
 
     @Override
@@ -27,8 +27,8 @@ public class IntervallHilfeIntentHandler implements RequestHandler {
         String speechText = help.getRandomExplanationForIntervall();
 
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.replace(SessionAttributeList.lastIntent, SessionAttributeList.statusHilfe);
-        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, speechText);
+        sessionAttributes.replace(SessionAttributeList.LAST_INTENT, SessionAttributeList.STATUS_HILFE);
+        sessionAttributes.replace(SessionAttributeList.FOR_REPEAT_INTENT, speechText);
         input.getAttributesManager().setSessionAttributes(sessionAttributes);
 
         return input.getResponseBuilder()

@@ -2,9 +2,10 @@ package songbird.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.response.ResponseBuilder;
-import org.junit.*;
-import org.mockito.*;
-
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;

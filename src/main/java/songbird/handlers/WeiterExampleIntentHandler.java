@@ -15,9 +15,9 @@ public class WeiterExampleIntentHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.lastIntent);
+        Object status = input.getAttributesManager().getSessionAttributes().get(SessionAttributeList.LAST_INTENT);
         return input.matches(intentName("WeiterExampleIntent"))
-                && status.toString().equals(SessionAttributeList.statusStimme);
+                && status.toString().equals(SessionAttributeList.STATUS_STIMME);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class WeiterExampleIntentHandler implements RequestHandler {
 
         String speechText = listContainer.getRandomQuestionIntervallOrLauf();
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        sessionAttributes.replace(SessionAttributeList.forRepeatIntent, speechText);
+        sessionAttributes.replace(SessionAttributeList.FOR_REPEAT_INTENT, speechText);
 
         return input.getResponseBuilder()
                 .withShouldEndSession(false)

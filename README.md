@@ -8,7 +8,7 @@ Dafür gibt es verschiedene Übungen, die der User ausführen kann, sowie ein Hi
 Stimmapparat "in Schuss halten" kann und die Stimme schont. <br>
 ![Songbisr](https://github.com/sweIhm-ws2018-19/skillproject-fr-24/blob/master/ProjectSongbird/Bilder/Girl.jpeg)
 
-## Status 
+## Status und Weiterleitung zu GitHubPages
 [![Build Status](https://travis-ci.org/sweIhm-ws2018-19/skillproject-fr-24.svg?branch=master)](https://travis-ci.org/sweIhm-ws2018-19/skillproject-fr-24)
 
 ![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=alexa-skills-kit-samples%3Asongbird&metric=alert_status)

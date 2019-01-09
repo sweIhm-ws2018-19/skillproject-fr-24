@@ -17,7 +17,7 @@ public class ListContainers {
             " Dein Gehoer wird trainiert, indem du Toene erkennst und anschließend nachsingst. Zu Beginn kann diese Uebung sehr schwierig erscheinen, da unser Gehoer vom Alltagslaerm ueberfordert sein kann. Goennne deinen Ohren eine Pause in der Stille und versuche im Alltag einzelne Geraeusche bewusst herauszufiltern. ",
             " Dein psychischer Zustand beeinflusst auch deine Stimme. Die Ursache von muskulaeren Verkrampfungen koennen auch seelische Anspannungen sein. Mit Freude zu singen ist eine gute Voraussetzung, um singen zu lernen. Zudem macht Singen auch gute Laune. ",
             " Durch Training kannst du deine Stimme und dein Gehoer verbessern. Wichtig ist es Geduld zu haben und dran zu bleiben. Nicht nur beim Singen, sondern auch bei Gespraechen und Vortraegen ist es vorteilhaft, Kontrolle ueber seine Stimme zu haben. ",
-            " Die angeborene Tonreichweite eines jeden Menschens nennt man Ambitus. Durch Training kann dieser erweitert werden.  Deine entspannte Stimmlage nennt man Indiffernzlage. Diese verwendest du, wenn du dich zum Beispiel mit anderen unterhaeltst. ",
+            " Die angeborene Tonreichweite eines jeden Menschens nennt man Ambitus. Durch Training kann dieser erweitert werden.  Deine entspannte Stimmlage nennt man Indifferenzlage. Diese verwendest du, wenn du dich zum Beispiel mit anderen unterhaeltst. ",
             " Um lange Toene besser und stabil zu halten, musst du kontrolliertes Atmen und die richtige Tonlage verbinden. Um dies zu ueben, atme tief ein und singe in einer angenehmen, mittleren Stimmlage auf La oder Du aus. Fokussiere dich auf die Stabilitaet des Tons und halte ihn solange wie moeglich. "
     };
 

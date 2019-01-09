@@ -31,7 +31,7 @@ public class ListContainers {
     };
 
     private final String[] workOnVoiceList = new String[] {
-            " <say-as interpret-as=\"interjection\">prima</say-as> .  Lass uns mit einer Zwerchfelluebung beginnen. Atme tief in deinen Bauch ein. Halte die Luft kurz an und atme auf F mit 5 Impulsen aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage weiter.  <break time=\"8000ms\"/>"
+            " <say-as interpret-as=\"interjection\">prima</say-as> .  Lass uns mit einer Zwerchfelluebung beginnen. Atme tief in deinen Bauch ein. Halte die Luft kurz an und atme auf F mit 5 Impulsen aus. Wiederhole die Uebung 5 mal. Wenn du die Uebung beendet hast sage weiter.  <break time=\"10000ms\"/>"
     };
 
     /*

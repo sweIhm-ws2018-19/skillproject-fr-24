@@ -1,18 +1,14 @@
 package songbird.handlers;
 
-import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.response.ResponseBuilder;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.junit.Assert;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
-import org.junit.Test;
 import static org.mockito.Mockito.when;
 
 public class LaunchRequestHandlerTest {

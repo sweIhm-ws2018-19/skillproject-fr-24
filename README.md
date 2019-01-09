@@ -11,5 +11,5 @@ Stimmapparat "in Schuss halten" kann und die Stimme schont. <br>
 ## Status 
 [![Build Status](https://travis-ci.org/sweIhm-ws2018-19/skillproject-fr-24.svg?branch=master)](https://travis-ci.org/sweIhm-ws2018-19/skillproject-fr-24)
 
-[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=alexa-skills-kit-samples%3Asongbird&metric=alert_status)]
+![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=alexa-skills-kit-samples%3Asongbird&metric=alert_status)
 

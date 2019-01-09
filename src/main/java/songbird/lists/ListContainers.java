@@ -70,7 +70,7 @@ public class ListContainers {
 
     private final String trainLaufNotCompletedEnding = "Moechtest du nun weiter machen mit Laeufen? ";
 
-    private static final String trainIntervallLaufCompletedEnding = "Super du hast das Ende deines Trainings fuer heute erreicht, moechtest du zum Abschluss noch einen Tipp hoeren? ";
+    private static final String TRAIN_INTERVALL_LAUF_COMPLETED_ENDING = "Super du hast das Ende deines Trainings fuer heute erreicht, moechtest du zum Abschluss noch einen Tipp hoeren? ";
 
     private static final String[] intervallList = new String[] {
             "<audio src=\"https://s3.amazonaws.com/songbirdrolebucket/Intervalle/int1.mp3\"/>",
@@ -154,7 +154,7 @@ public class ListContainers {
     }
 
     public String getTrainIntervallAndLaufCompletedEnding() {
-        return trainIntervallLaufCompletedEnding;
+        return TRAIN_INTERVALL_LAUF_COMPLETED_ENDING;
     }
 
     /**

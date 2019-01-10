@@ -1,4 +1,5 @@
 # Project Songbird 
+<img src="images/Songbird.JPG" alt="Songbird" class="inline"/> <br>
 ### Systemidee<br>
 Lerne zu Singen, dich aufzuwärmen und deine Stimme zu trainieren.
 Songbird ist der erste Virtuelle Vocal Coach von Alexa und ermöglicht durch tägliches Üben deine Stimme zu verbessern. 
